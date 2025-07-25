@@ -815,10 +815,14 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "pypeec" },
+    { name = "scilogger" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pypeec", specifier = ">=5.7.1" }]
+requires-dist = [
+    { name = "pypeec", specifier = ">=5.7.1" },
+    { name = "scilogger", specifier = ">=1.2.5" },
+]
 
 [[package]]
 name = "pyside6"

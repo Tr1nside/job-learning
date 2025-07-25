@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial &mdash; PyPEEC</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../_static/icon.png"/>
+    <link rel="canonical" href="https://pypeec.otvam.ch/content/tutorial.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a92a099e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7a9aa3" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyPEEC - 5.7.1
+              <img src="../_static/sphinx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General Doc</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-setup">Step 1: Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-introduction">Step 2: Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-mesher">Step 3: Mesher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-viewer">Step 4: Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-solver">Step 5: Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-6-plotter">Step 6: Plotter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="method.html">PEEC Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="warnings.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7a9aa3" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyPEEC - 5.7.1</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading"></a></h1>
+<section id="step-1-setup">
+<h2>Step 1: Setup<a class="headerlink" href="#step-1-setup" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install PyPEEC</span>
+<span class="c1">#   - With a Python environment</span>
+<span class="c1">#   - With a Conda environment</span>
+
+<span class="c1"># Check the PyPEEC version</span>
+pypeec<span class="w"> </span>--version
+
+<span class="c1"># Extract the PyPEEC examples</span>
+pypeec<span class="w"> </span>examples<span class="w"> </span>examples
+
+<span class="c1"># Extract the PyPEEC documentation</span>
+pypeec<span class="w"> </span>documentation<span class="w"> </span>documentation
+</pre></div>
+</div>
+</section>
+<section id="step-2-introduction">
+<h2>Step 2: Introduction<a class="headerlink" href="#step-2-introduction" title="Link to this heading"></a></h2>
+<p>This tutorial demonstrates how PyPEEC can be used to simulate a four-layer PCB coil.
+The coil has two terminals and the simulation is done in the frequency domain.
+All the commands are executed inside the virtual environment from the <code class="docutils literal notranslate"><span class="pre">examples</span></code> folder.</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/geometry.png" src="../_images/geometry.png" />
+<figcaption>
+<p><span class="caption-text">Geometry of the considered four-layer PCB coil.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="step-3-mesher">
+<h2>Step 3: Mesher<a class="headerlink" href="#step-3-mesher" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the mesher from the command line</span>
+<span class="c1">#   - geometry.yaml - contains the geometry description (input)</span>
+<span class="c1">#   - voxel.json.gz - contains the meshed voxel structure (output)</span>
+
+pypeec<span class="w"> </span>mesher<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--geometry<span class="w"> </span>tutorial/geometry.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--voxel<span class="w"> </span>tutorial/voxel.json.gz
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the mesher from the Python interpreter</span>
+<span class="c1">#   - geometry.yaml - contains the geometry description (input)</span>
+<span class="c1">#   - voxel.json.gz - contains the meshed voxel structure (output)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pypeec</span>
+
+<span class="n">file_geometry</span> <span class="o">=</span> <span class="s2">&quot;tutorial/geometry.yaml&quot;</span>
+<span class="n">file_voxel</span> <span class="o">=</span> <span class="s2">&quot;tutorial/voxel.json.gz&quot;</span>
+
+<span class="n">pypeec</span><span class="o">.</span><span class="n">run_mesher_file</span><span class="p">(</span>
+    <span class="n">file_geometry</span><span class="o">=</span><span class="n">file_geometry</span><span class="p">,</span>
+    <span class="n">file_voxel</span><span class="o">=</span><span class="n">file_voxel</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>00:00:00.00 : pypeec   : info     : load the input data : start
+00:00:00.08 : pypeec   : info     : load the input data : done
+00:00:00.08 : pypeec   : info     : load the mesher
+00:00:06.90 : pypeec   : info     : run the mesher
+00:00:06.90 : pypeec   : info     : check the input data
+00:00:06.91 : pypeec   : info     : mesher_shape : enter : 00:00:00.00
+00:00:06.91 : pypeec   : debug    :     prepare the shapes
+00:00:06.91 : pypeec   : debug    :         parse the layers
+00:00:06.92 : pypeec   : debug    :         create the shapes
+00:00:06.96 : pypeec   : debug    :         get the voxel size
+00:00:06.96 : pypeec   : debug    :         merge the shapes
+00:00:07.06 : pypeec   : debug    :     voxelize the shapes
+00:00:07.35 : pypeec   : debug    :         domain = trace / size = 19728
+00:00:07.35 : pypeec   : debug    :         domain = via / size = 1195
+00:00:07.35 : pypeec   : debug    :         domain = src / size = 361
+00:00:07.35 : pypeec   : debug    :         domain = sink / size = 361
+00:00:07.35 : pypeec   : info     : mesher_shape : exit : 00:00:00.44
+00:00:07.35 : pypeec   : info     : voxel_point : enter : 00:00:00.00
+00:00:07.35 : pypeec   : debug    :     check_cloud = True
+00:00:07.35 : pypeec   : debug    :     filter_cloud = True
+00:00:07.35 : pypeec   : debug    :     original number = 25
+00:00:07.42 : pypeec   : debug    :     final number = 25
+00:00:07.42 : pypeec   : info     : voxel_point : exit : 00:00:00.07
+00:00:07.42 : pypeec   : info     : voxel_resampling : enter : 00:00:00.00
+00:00:07.42 : pypeec   : debug    :     use_reduce = False
+00:00:07.42 : pypeec   : debug    :     use_resample = False
+00:00:07.42 : pypeec   : debug    :     original number = 331056
+00:00:07.42 : pypeec   : debug    :     final number = 331056
+00:00:07.42 : pypeec   : info     : voxel_resampling : exit : 00:00:00.00
+00:00:07.42 : pypeec   : info     : voxel_conflict : enter : 00:00:00.00
+00:00:07.43 : pypeec   : info     : voxel_conflict : exit : 00:00:00.00
+00:00:07.43 : pypeec   : info     : voxel_integrity : enter : 00:00:00.00
+00:00:08.24 : pypeec   : info     : voxel_integrity : exit : 00:00:00.81
+00:00:08.24 : pypeec   : info     : voxel_summary : enter : 00:00:00.00
+00:00:08.24 : pypeec   : debug    :     voxel size
+00:00:08.24 : pypeec   : debug    :         n = (132, 132, 19)
+00:00:08.24 : pypeec   : debug    :         d = (3.50e-05, 3.50e-05, 3.50e-05)
+00:00:08.24 : pypeec   : debug    :         s = (4.63e-03, 4.63e-03, 6.65e-04)
+00:00:08.24 : pypeec   : debug    :         c = (1.94e-03, 1.94e-03, 0.00e+00)
+00:00:08.24 : pypeec   : debug    :         A = (2.14e-05, 3.08e-06, 3.08e-06)
+00:00:08.24 : pypeec   : debug    :     voxel summary
+00:00:08.24 : pypeec   : debug    :         V_total = 1.42e-08
+00:00:08.24 : pypeec   : debug    :         V_used = 9.12e-10
+00:00:08.24 : pypeec   : debug    :         n_total = 331056
+00:00:08.24 : pypeec   : debug    :         n_used = 21215
+00:00:08.24 : pypeec   : debug    :         ratio = 6.41e-02
+00:00:08.24 : pypeec   : debug    :         n_domain = 4
+00:00:08.24 : pypeec   : debug    :         n_component = 1
+00:00:08.24 : pypeec   : debug    :         n_cloud = 25
+00:00:08.24 : pypeec   : debug    :     voxel domain
+00:00:08.24 : pypeec   : debug    :         trace = 19298
+00:00:08.24 : pypeec   : debug    :         via = 1195
+00:00:08.24 : pypeec   : debug    :         src = 361
+00:00:08.24 : pypeec   : debug    :         sink = 361
+00:00:08.24 : pypeec   : info     : voxel_summary : exit : 00:00:00.00
+00:00:08.24 : pypeec   : info     : successful mesher termination
+00:00:08.24 : pypeec   : info     : save the results : start
+00:00:08.67 : pypeec   : info     : save the results : done
+</pre></div>
+</div>
+</section>
+<section id="step-4-viewer">
+<h2>Step 4: Viewer<a class="headerlink" href="#step-4-viewer" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the viewer from the command line</span>
+<span class="c1">#   - voxel.json.gz - contains the meshed voxel structure (input)</span>
+<span class="c1">#   - viewer.yaml - contains the plot configuration (input)</span>
+<span class="c1">#   - tag_plot - list of plots to be shown (defined in viewer.yaml)</span>
+<span class="c1">#   - plot_mode - method used for rendering the plots</span>
+
+pypeec<span class="w"> </span>viewer<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--voxel<span class="w"> </span>tutorial/voxel.json.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--viewer<span class="w"> </span>config/viewer.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tag_plot<span class="w"> </span>domain<span class="w"> </span>voxelization<span class="w"> </span>adjacent<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--plot_mode<span class="w"> </span>qt
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the viewer from the Python interpreter</span>
+<span class="c1">#   - voxel.json.gz - contains the meshed voxel structure (input)</span>
+<span class="c1">#   - viewer.yaml - contains the plot configuration (input)</span>
+<span class="c1">#   - tag_plot - list of plots to be shown (defined in viewer.yaml)</span>
+<span class="c1">#   - plot_mode - method used for rendering the plots</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pypeec</span>
+
+<span class="n">file_voxel</span> <span class="o">=</span> <span class="s2">&quot;tutorial/voxel.json.gz&quot;</span>
+<span class="n">file_viewer</span> <span class="o">=</span> <span class="s2">&quot;config/viewer.yaml&quot;</span>
+
+<span class="n">pypeec</span><span class="o">.</span><span class="n">run_viewer_file</span><span class="p">(</span>
+    <span class="n">file_voxel</span><span class="o">=</span><span class="n">file_voxel</span><span class="p">,</span>
+    <span class="n">file_viewer</span><span class="o">=</span><span class="n">file_viewer</span><span class="p">,</span>
+    <span class="n">tag_plot</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">,</span> <span class="s2">&quot;voxelization&quot;</span><span class="p">,</span> <span class="s2">&quot;adjacent&quot;</span><span class="p">],</span>
+    <span class="n">plot_mode</span><span class="o">=</span><span class="s2">&quot;qt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id2">
+<img alt="../_images/viewer_domain.png" src="../_images/viewer_domain.png" />
+<figcaption>
+<p><span class="caption-text">Plot showing the different domains composing the voxel structure.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<img alt="../_images/viewer_voxelization.png" src="../_images/viewer_voxelization.png" />
+<figcaption>
+<p><span class="caption-text">Plot comparing the voxelized and original geometries.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<img alt="../_images/viewer_adjacent.png" src="../_images/viewer_adjacent.png" />
+<figcaption>
+<p><span class="caption-text">Plot showing which domains are adjacent to each others.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="step-5-solver">
+<h2>Step 5: Solver<a class="headerlink" href="#step-5-solver" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the solver from the command line</span>
+<span class="c1">#   - voxel.json.gz - contains the meshed voxel structure (input)</span>
+<span class="c1">#   - problem.yaml - contains the magnetic problem description (input)</span>
+<span class="c1">#   - tolerance.yaml - contains the solver numerical tolerances (input)</span>
+<span class="c1">#   - solution.json.gz - contains the problem solution (output)</span>
+
+pypeec<span class="w"> </span>solver<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--voxel<span class="w"> </span>tutorial/voxel.json.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--problem<span class="w"> </span>tutorial/problem.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tolerance<span class="w"> </span>config/tolerance.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--solution<span class="w"> </span>tutorial/solution.json.gz
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the solver from the Python interpreter</span>
+<span class="c1">#   - voxel.json.gz - contains the meshed voxel structure (input)</span>
+<span class="c1">#   - problem.yaml - contains the magnetic problem description (input)</span>
+<span class="c1">#   - tolerance.yaml - contains the solver numerical tolerances (input)</span>
+<span class="c1">#   - solution.json.gz - contains the problem solution (output)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pypeec</span>
+
+<span class="n">file_voxel</span> <span class="o">=</span> <span class="s2">&quot;tutorial/voxel.json.gz&quot;</span>
+<span class="n">file_solution</span> <span class="o">=</span> <span class="s2">&quot;tutorial/solution.json.gz&quot;</span>
+<span class="n">file_problem</span> <span class="o">=</span> <span class="s2">&quot;tutorial/problem.yaml&quot;</span>
+<span class="n">file_tolerance</span> <span class="o">=</span> <span class="s2">&quot;config/tolerance.yaml&quot;</span>
+
+<span class="n">pypeec</span><span class="o">.</span><span class="n">run_solver_file</span><span class="p">(</span>
+    <span class="n">file_voxel</span><span class="o">=</span><span class="n">file_voxel</span><span class="p">,</span>
+    <span class="n">file_problem</span><span class="o">=</span><span class="n">file_problem</span><span class="p">,</span>
+    <span class="n">file_tolerance</span><span class="o">=</span><span class="n">file_tolerance</span><span class="p">,</span>
+    <span class="n">file_solution</span><span class="o">=</span><span class="n">file_solution</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>00:00:00.00 : pypeec   : info     : load the input data : start
+00:00:00.10 : pypeec   : info     : load the input data : done
+00:00:00.10 : pypeec   : info     : load the solver
+00:00:01.07 : pypeec   : info     : run the solver
+00:00:01.07 : pypeec   : info     : check the input data
+00:00:01.08 : pypeec   : info     : combine the input data
+00:00:01.08 : pypeec   : info     : init : enter : 00:00:00.00
+00:00:01.09 : pypeec   : info     :     voxel_geometry : enter : 00:00:00.00
+00:00:01.53 : pypeec   : info     :     voxel_geometry : exit : 00:00:00.44
+00:00:01.53 : pypeec   : info     :     problem_geometry : enter : 00:00:00.00
+00:00:01.67 : pypeec   : debug    :         n_voxel_total = 331056
+00:00:01.67 : pypeec   : debug    :         n_voxel_used = 21215
+00:00:01.67 : pypeec   : debug    :         n_face_total = 993168
+00:00:01.67 : pypeec   : debug    :         n_face_used = 42062
+00:00:01.67 : pypeec   : debug    :         n_voxel_electric = 21215
+00:00:01.67 : pypeec   : debug    :         n_voxel_magnetic = 0
+00:00:01.67 : pypeec   : debug    :         n_face_electric = 42062
+00:00:01.67 : pypeec   : debug    :         n_face_magnetic = 0
+00:00:01.67 : pypeec   : debug    :         n_src_current = 0
+00:00:01.67 : pypeec   : debug    :         n_src_voltage = 722
+00:00:01.67 : pypeec   : debug    :         ratio_voxel = 6.41e-02
+00:00:01.67 : pypeec   : debug    :         ratio_face = 4.24e-02
+00:00:01.67 : pypeec   : info     :     problem_geometry : exit : 00:00:00.15
+00:00:01.67 : pypeec   : info     :     system_tensor : enter : 00:00:00.00
+00:00:01.67 : pypeec   : debug    :         analytical / 6D / size = 1
+00:00:01.74 : pypeec   : debug    :         analytical / 6D / size = 4624
+00:00:02.17 : pypeec   : debug    :         numerical / 6D / size = 326432
+00:00:02.21 : pypeec   : info     :     system_tensor : exit : 00:00:00.53
+00:00:02.21 : pypeec   : info     :     system_matrix : enter : 00:00:00.00
+00:00:02.21 : pypeec   : debug    :         inductance / operator = (42062 x 42062)
+00:00:02.29 : pypeec   : debug    :         inductance / footprint = 40.41 MB
+00:00:02.54 : pypeec   : debug    :         potential / operator = (0 x 0)
+00:00:02.54 : pypeec   : debug    :         coupling / operator = (42062 x 0)
+00:00:02.54 : pypeec   : debug    :         coupling / operator = (0 x 42062)
+00:00:02.54 : pypeec   : info     :     system_matrix : exit : 00:00:00.33
+00:00:02.54 : pypeec   : info     : init : exit : 00:00:01.45
+00:00:02.54 : pypeec   : info     : sweep / sim_dc : enter : 00:00:00.00
+00:00:02.54 : pypeec   : info     :     problem_value : enter : 00:00:00.00
+00:00:02.58 : pypeec   : info     :     problem_value : exit : 00:00:00.04
+00:00:02.58 : pypeec   : info     :     equation_system : enter : 00:00:00.00
+00:00:02.60 : pypeec   : info     :     equation_system : exit : 00:00:00.02
+00:00:02.60 : pypeec   : info     :     extract_convergence : enter : 00:00:00.00
+00:00:02.60 : pypeec   : info     :     extract_convergence : exit : 00:00:00.00
+00:00:02.60 : pypeec   : info     :     equation_solver : enter : 00:00:00.00
+00:00:02.60 : pypeec   : debug    :         factorization / electric
+00:00:02.63 : pypeec   : debug    :             matrix / size = (21937, 21937)
+00:00:02.63 : pypeec   : debug    :             matrix / sparsity = 107505
+00:00:02.63 : pypeec   : debug    :             compute factorization
+00:00:06.98 : pypeec   : debug    :             factorization success
+00:00:06.98 : pypeec   : debug    :         factorization / magnetic
+00:00:06.98 : pypeec   : debug    :             matrix / size = (0, 0)
+00:00:06.98 : pypeec   : debug    :             matrix / sparsity = 0
+00:00:06.98 : pypeec   : debug    :         condition / electric
+00:00:06.98 : pypeec   : debug    :             matrix / size = (21937, 21937)
+00:00:06.98 : pypeec   : debug    :             matrix / sparsity = 107505
+00:00:06.98 : pypeec   : debug    :             compute LU decomposition
+00:00:10.15 : pypeec   : debug    :             estimate norm of the inverse
+00:00:10.40 : pypeec   : debug    :             estimate norm of the matrix
+00:00:10.60 : pypeec   : debug    :             compute condition estimate
+00:00:10.61 : pypeec   : debug    :         condition / magnetic
+00:00:10.61 : pypeec   : debug    :             matrix / size = (0, 0)
+00:00:10.61 : pypeec   : debug    :             matrix / sparsity = 0
+00:00:10.61 : pypeec   : debug    :         condition summary
+00:00:10.61 : pypeec   : debug    :             check = True
+00:00:10.61 : pypeec   : debug    :             status = True
+00:00:10.61 : pypeec   : debug    :             cond_electric = 3.25e+06
+00:00:10.61 : pypeec   : debug    :             cond_magnetic = 0.00e+00
+00:00:10.61 : pypeec   : debug    :             matrix condition is good
+00:00:10.61 : pypeec   : debug    :         solver run
+00:00:10.64 : pypeec   : debug    :             init / 0.00e+00+0.00e+00j VA
+00:00:10.89 : pypeec   : debug    :             iter = 1 / S = 1.98e+01+0.00e+00j VA
+00:00:10.90 : pypeec   : debug    :             final / 1.98e+01+0.00e+00j VA
+00:00:10.91 : pypeec   : debug    :         solver summary
+00:00:10.91 : pypeec   : debug    :             n_dof_total = 63999
+00:00:10.91 : pypeec   : debug    :             n_dof_electric = 63999
+00:00:10.91 : pypeec   : debug    :             n_dof_magnetic = 0
+00:00:10.91 : pypeec   : debug    :             status = True
+00:00:10.91 : pypeec   : debug    :             power = False
+00:00:10.91 : pypeec   : debug    :             n_iter = 1
+00:00:10.91 : pypeec   : debug    :             n_sys_eval = 2
+00:00:10.91 : pypeec   : debug    :             n_pcd_eval = 3
+00:00:10.92 : pypeec   : debug    :             residuum_val = 9.43e-11
+00:00:10.92 : pypeec   : debug    :             residuum_thr = 1.90e-02
+00:00:10.92 : pypeec   : debug    :             convergence achieved
+00:00:10.92 : pypeec   : info     :     equation_solver : exit : 00:00:08.32
+00:00:10.92 : pypeec   : info     :     extract_solution : enter : 00:00:00.00
+00:00:11.94 : pypeec   : debug    :         domain = trace_via
+00:00:11.94 : pypeec   : debug    :             P_electric = 1.96e+01 W
+00:00:11.94 : pypeec   : debug    :             P_magnetic = 0.00e+00 W
+00:00:11.94 : pypeec   : debug    :             P_total = 1.96e+01 W
+00:00:11.94 : pypeec   : debug    :         domain = src_sink
+00:00:11.94 : pypeec   : debug    :             P_electric = 1.70e-01 W
+00:00:11.94 : pypeec   : debug    :             P_magnetic = 0.00e+00 W
+00:00:11.94 : pypeec   : debug    :             P_total = 1.70e-01 W
+00:00:11.94 : pypeec   : debug    :         terminal = src
+00:00:11.94 : pypeec   : debug    :             type = voltage / lumped
+00:00:11.94 : pypeec   : debug    :             V = +9.79e-01+0.00e+00j V
+00:00:11.94 : pypeec   : debug    :             I = +2.06e+01+0.00e+00j A
+00:00:11.94 : pypeec   : debug    :             S = +2.02e+01+0.00e+00j VA
+00:00:11.94 : pypeec   : debug    :         terminal = sink
+00:00:11.94 : pypeec   : debug    :             type = voltage / lumped
+00:00:11.94 : pypeec   : debug    :             V = +2.06e-02+0.00e+00j V
+00:00:11.94 : pypeec   : debug    :             I = -2.06e+01+0.00e+00j A
+00:00:11.94 : pypeec   : debug    :             S = -4.28e-01+0.00e+00j VA
+00:00:11.94 : pypeec   : debug    :         integral
+00:00:11.95 : pypeec   : debug    :             S_total_real = 1.98e+01 VA
+00:00:11.95 : pypeec   : debug    :             S_total_imag = 0.00e+00j VA
+00:00:11.95 : pypeec   : debug    :             P_electric = 1.98e+01 W
+00:00:11.95 : pypeec   : debug    :             P_magnetic = 0.00e+00 W
+00:00:11.95 : pypeec   : debug    :             W_electric = 1.24e-05 J
+00:00:11.95 : pypeec   : debug    :             W_magnetic = 0.00e+00 J
+00:00:11.95 : pypeec   : debug    :             P_total = 1.98e+01 W
+00:00:11.95 : pypeec   : debug    :             W_total = 1.24e-05 J
+00:00:12.54 : pypeec   : info     :     extract_solution : exit : 00:00:01.62
+00:00:12.54 : pypeec   : info     : sweep / sim_dc : exit : 00:00:10.01
+00:00:12.54 : pypeec   : info     : sweep / sim_ac : enter : 00:00:00.00
+00:00:12.54 : pypeec   : info     :     problem_value : enter : 00:00:00.00
+00:00:12.59 : pypeec   : info     :     problem_value : exit : 00:00:00.04
+00:00:12.59 : pypeec   : info     :     equation_system : enter : 00:00:00.00
+00:00:12.61 : pypeec   : info     :     equation_system : exit : 00:00:00.02
+00:00:12.61 : pypeec   : info     :     extract_convergence : enter : 00:00:00.00
+00:00:12.61 : pypeec   : info     :     extract_convergence : exit : 00:00:00.00
+00:00:12.61 : pypeec   : info     :     equation_solver : enter : 00:00:00.00
+00:00:12.61 : pypeec   : debug    :         factorization / electric
+00:00:12.63 : pypeec   : debug    :             matrix / size = (21937, 21937)
+00:00:12.63 : pypeec   : debug    :             matrix / sparsity = 107505
+00:00:12.63 : pypeec   : debug    :             compute factorization
+00:00:14.06 : pypeec   : debug    :             factorization success
+00:00:14.06 : pypeec   : debug    :         factorization / magnetic
+00:00:14.06 : pypeec   : debug    :             matrix / size = (0, 0)
+00:00:14.06 : pypeec   : debug    :             matrix / sparsity = 0
+00:00:14.06 : pypeec   : debug    :         condition / electric
+00:00:14.06 : pypeec   : debug    :             matrix / size = (21937, 21937)
+00:00:14.06 : pypeec   : debug    :             matrix / sparsity = 107505
+00:00:14.06 : pypeec   : debug    :             compute LU decomposition
+00:00:17.49 : pypeec   : debug    :             estimate norm of the inverse
+00:00:17.80 : pypeec   : debug    :             estimate norm of the matrix
+00:00:17.95 : pypeec   : debug    :             compute condition estimate
+00:00:17.95 : pypeec   : debug    :         condition / magnetic
+00:00:17.95 : pypeec   : debug    :             matrix / size = (0, 0)
+00:00:17.95 : pypeec   : debug    :             matrix / sparsity = 0
+00:00:17.95 : pypeec   : debug    :         condition summary
+00:00:17.95 : pypeec   : debug    :             check = True
+00:00:17.95 : pypeec   : debug    :             status = True
+00:00:17.95 : pypeec   : debug    :             cond_electric = 3.25e+06
+00:00:17.95 : pypeec   : debug    :             cond_magnetic = 0.00e+00
+00:00:17.95 : pypeec   : debug    :             matrix condition is good
+00:00:17.95 : pypeec   : debug    :         solver run
+00:00:17.96 : pypeec   : debug    :             init / 9.89e+00+0.00e+00j VA
+00:00:28.69 : pypeec   : debug    :             iter = 1 / S = 2.03e-01+1.35e+00j VA
+00:00:28.71 : pypeec   : debug    :             final / 2.03e-01+1.35e+00j VA
+00:00:29.19 : pypeec   : debug    :         solver summary
+00:00:29.19 : pypeec   : debug    :             n_dof_total = 63999
+00:00:29.19 : pypeec   : debug    :             n_dof_electric = 63999
+00:00:29.19 : pypeec   : debug    :             n_dof_magnetic = 0
+00:00:29.19 : pypeec   : debug    :             status = True
+00:00:29.19 : pypeec   : debug    :             power = False
+00:00:29.19 : pypeec   : debug    :             n_iter = 1
+00:00:29.19 : pypeec   : debug    :             n_sys_eval = 12
+00:00:29.19 : pypeec   : debug    :             n_pcd_eval = 12
+00:00:29.19 : pypeec   : debug    :             residuum_val = 1.16e-06
+00:00:29.19 : pypeec   : debug    :             residuum_thr = 1.90e-02
+00:00:29.19 : pypeec   : debug    :             convergence achieved
+00:00:29.19 : pypeec   : info     :     equation_solver : exit : 00:00:16.58
+00:00:29.19 : pypeec   : info     :     extract_solution : enter : 00:00:00.00
+00:00:29.70 : pypeec   : debug    :         domain = trace_via
+00:00:29.70 : pypeec   : debug    :             P_electric = 2.01e-01 W
+00:00:29.70 : pypeec   : debug    :             P_magnetic = 0.00e+00 W
+00:00:29.70 : pypeec   : debug    :             P_total = 2.01e-01 W
+00:00:29.70 : pypeec   : debug    :         domain = src_sink
+00:00:29.71 : pypeec   : debug    :             P_electric = 1.96e-03 W
+00:00:29.71 : pypeec   : debug    :             P_magnetic = 0.00e+00 W
+00:00:29.71 : pypeec   : debug    :             P_total = 1.96e-03 W
+00:00:29.71 : pypeec   : debug    :         terminal = src
+00:00:29.71 : pypeec   : debug    :             type = voltage / lumped
+00:00:29.71 : pypeec   : debug    :             V = +1.00e+00+2.70e-03j V
+00:00:29.71 : pypeec   : debug    :             I = +4.37e-01-2.70e+00j A
+00:00:29.71 : pypeec   : debug    :             S = +2.11e-01+1.35e+00j VA
+00:00:29.71 : pypeec   : debug    :         terminal = sink
+00:00:29.71 : pypeec   : debug    :             type = voltage / lumped
+00:00:29.71 : pypeec   : debug    :             V = +4.37e-04-2.70e-03j V
+00:00:29.71 : pypeec   : debug    :             I = -4.37e-01+2.70e+00j A
+00:00:29.71 : pypeec   : debug    :             S = -7.67e-03-1.58e-15j VA
+00:00:29.71 : pypeec   : debug    :         integral
+00:00:29.71 : pypeec   : debug    :             S_total_real = 2.03e-01 VA
+00:00:29.71 : pypeec   : debug    :             S_total_imag = 1.35e+00j VA
+00:00:29.71 : pypeec   : debug    :             P_electric = 2.03e-01 W
+00:00:29.71 : pypeec   : debug    :             P_magnetic = 0.00e+00 W
+00:00:29.71 : pypeec   : debug    :             W_electric = 1.07e-07 J
+00:00:29.71 : pypeec   : debug    :             W_magnetic = 0.00e+00 J
+00:00:29.71 : pypeec   : debug    :             P_total = 2.03e-01 W
+00:00:29.71 : pypeec   : debug    :             W_total = 1.07e-07 J
+00:00:30.22 : pypeec   : info     :     extract_solution : exit : 00:00:01.03
+00:00:30.22 : pypeec   : info     : sweep / sim_ac : exit : 00:00:17.68
+00:00:30.22 : pypeec   : info     : successful solver termination
+00:00:30.22 : pypeec   : info     : save the results : start
+00:00:36.74 : pypeec   : info     : save the results : done
+</pre></div>
+</div>
+</section>
+<section id="step-6-plotter">
+<h2>Step 6: Plotter<a class="headerlink" href="#step-6-plotter" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the plotter from the command line</span>
+<span class="c1">#   - solution.json.gz - contains the problem solution (input)</span>
+<span class="c1">#   - plotter.yaml - contains the plot configuration (input)</span>
+<span class="c1">#   - tag_plot - list of plots to be shown (defined in plotter.yaml)</span>
+<span class="c1">#   - plot_mode - method used for rendering the plots</span>
+
+pypeec<span class="w"> </span>plotter<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--solution<span class="w"> </span>tutorial/solution.json.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--plotter<span class="w"> </span>config/plotter.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tag_plot<span class="w"> </span>V_c_norm<span class="w"> </span>J_c_norm<span class="w"> </span>H_p_norm<span class="w"> </span>residuum<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--plot_mode<span class="w"> </span>qt
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the plotter from the Python interpreter</span>
+<span class="c1">#   - solution.json.gz - contains the problem solution (input)</span>
+<span class="c1">#   - plotter.yaml - contains the plot configuration (input)</span>
+<span class="c1">#   - tag_plot - list of plots to be shown (defined in plotter.yaml)</span>
+<span class="c1">#   - plot_mode - method used for rendering the plots</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pypeec</span>
+
+<span class="n">file_solution</span> <span class="o">=</span> <span class="s2">&quot;tutorial/solution.json.gz&quot;</span>
+<span class="n">file_plotter</span> <span class="o">=</span> <span class="s2">&quot;config/plotter.yaml&quot;</span>
+
+<span class="n">pypeec</span><span class="o">.</span><span class="n">run_plotter_file</span><span class="p">(</span>
+    <span class="n">file_solution</span><span class="o">=</span><span class="n">file_solution</span><span class="p">,</span>
+    <span class="n">file_plotter</span><span class="o">=</span><span class="n">file_plotter</span><span class="p">,</span>
+    <span class="n">tag_plot</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;V_c_norm&quot;</span><span class="p">,</span> <span class="s2">&quot;J_c_norm&quot;</span><span class="p">,</span> <span class="s2">&quot;H_p_norm&quot;</span><span class="p">,</span> <span class="s2">&quot;residuum&quot;</span><span class="p">],</span>
+    <span class="n">plot_mode</span><span class="o">=</span><span class="s2">&quot;qt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id5">
+<img alt="../_images/plotter_voltage.png" src="../_images/plotter_voltage.png" />
+<figcaption>
+<p><span class="caption-text">Plot showing the electric potential.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
+<img alt="../_images/plotter_current.png" src="../_images/plotter_current.png" />
+<figcaption>
+<p><span class="caption-text">Plot showing the current density.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
+<img alt="../_images/plotter_field.png" src="../_images/plotter_field.png" />
+<figcaption>
+<p><span class="caption-text">Plot showing the generated magnetic field.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
+<img alt="../_images/plotter_residuum.png" src="../_images/plotter_residuum.png" />
+<figcaption>
+<p><span class="caption-text">Plot showing the equation system residuum.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Thomas Guillod - Dartmouth College.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

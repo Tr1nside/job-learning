@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workflow &mdash; PyPEEC</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../_static/icon.png"/>
+    <link rel="canonical" href="https://pypeec.otvam.ch/content/workflow.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a92a099e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PEEC Method" href="method.html" />
+    <link rel="prev" title="Gallery" href="gallery.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7a9aa3" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyPEEC - 5.7.1
+              <img src="../_static/sphinx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General Doc</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pypeec-workflow">PyPEEC Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pypeec-tools">PyPEEC Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entry-points-and-scripts">Entry Points and Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-output-file-description">Input/Output File Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geometry-preparation">Geometry Preparation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="method.html">PEEC Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="warnings.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7a9aa3" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyPEEC - 5.7.1</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Workflow</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="workflow">
+<h1>Workflow<a class="headerlink" href="#workflow" title="Link to this heading"></a></h1>
+<section id="pypeec-workflow">
+<h2>PyPEEC Workflow<a class="headerlink" href="#pypeec-workflow" title="Link to this heading"></a></h2>
+<figure class="align-default" id="id1">
+<img alt="../_images/workflow.png" src="../_images/workflow.png" />
+<figcaption>
+<p><span class="caption-text">Description of the PyPEEC workflow (mesher, viewer, solver, and plotter).
+The input files (geometry, problem, tolerance, plotter, and viewer) are either in JSON or YAML formats.
+The output files (voxel and solution) are either in JSON, MessagePack or Pickle formats.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="pypeec-tools">
+<h2>PyPEEC Tools<a class="headerlink" href="#pypeec-tools" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>mesher</strong></p>
+<ul>
+<li><p>Create the voxel structure.</p></li>
+<li><p>Draw the geometry from voxel indices.</p></li>
+<li><p>Create the geometry from 3D STL files.</p></li>
+<li><p>Create the geometry with stacked PNG files.</p></li>
+<li><p>Draw the geometry with stacked 2D vector shapes.</p></li>
+<li><p>Assign different domain names to the voxels.</p></li>
+<li><p>Resampling (refine) the voxel structure.</p></li>
+<li><p>Construct the graph of the structure.</p></li>
+<li><p>Check the integrity of the voxel structure.</p></li>
+</ul>
+</li>
+<li><p><strong>viewer</strong></p>
+<ul>
+<li><p>Visualization of the different domains composing the voxel structure.</p></li>
+<li><p>Visualization of the connected components composing the voxel structure.</p></li>
+<li><p>Comparison of the voxelized and original geometries.</p></li>
+<li><p>Matrix showing the connected/adjacent domains.</p></li>
+</ul>
+</li>
+<li><p><strong>solver</strong></p>
+<ul>
+<li><p>Computation of the incidence matrix.</p></li>
+<li><p>Computation of the Green and coupling tensors.</p></li>
+<li><p>Computation of the resistance, inductance, and potential matrices.</p></li>
+<li><p>Computation of the electric-magnetic coupling matrices.</p></li>
+<li><p>Creation of the equation system describing the PEEC problem.</p></li>
+<li><p>Extraction of a sparse pre-conditioner for the dense system.</p></li>
+<li><p>Extraction of a matrix-vector linear operator for the full system.</p></li>
+<li><p>Computation of the condition number of the pre-conditioner equation system.</p></li>
+<li><p>Solve the equation system with the pre-conditioner and the linear operator.</p></li>
+<li><p>Extract the solution (terminal voltages and currents, scalar fields, and vector fields).</p></li>
+</ul>
+</li>
+<li><p><strong>plotter</strong></p>
+<ul>
+<li><p>Plot the material and source description.</p></li>
+<li><p>Plot the scalar and vector fields on the voxels.</p></li>
+<li><p>Plot the magnetic near-field generated by the voxels.</p></li>
+<li><p>Plot the solver convergence and residuum.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="entry-points-and-scripts">
+<h2>Entry Points and Scripts<a class="headerlink" href="#entry-points-and-scripts" title="Link to this heading"></a></h2>
+<p>The entry points of the different tools are located in the <code class="docutils literal notranslate"><span class="pre">pypeec</span></code> module:</p>
+<ul class="simple">
+<li><p>Running the tools with files as input/output:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_mesher_file</span></code> - Run the <strong>mesher</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_viewer_file</span></code> - Run the <strong>viewer</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_solver_file</span></code> - Run the <strong>solver</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_plotter_file</span></code> - Run the <strong>plotter</strong>.</p></li>
+</ul>
+</li>
+<li><p>Running the tools with data as input/output:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_mesher_data</span></code> - Run the <strong>mesher</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_viewer_data</span></code> - Run the <strong>viewer</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_solver_data</span></code> - Run the <strong>solver</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_plotter_data</span></code> - Run the <strong>plotter</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Additionally, a command line tool is installed with the package:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">--help</span></code> - Display the command line options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">--version</span></code> - Display the version number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">mesher</span></code> - Run the <strong>mesher</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">viewer</span></code> - Run the <strong>viewer</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">solver</span></code> - Run the <strong>solver</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">plotter</span></code> - Run the <strong>plotter</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">examples</span></code> - Extract the <strong>examples</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">documentation</span></code> - Extract the <strong>documentation</strong>.</p></li>
+</ul>
+</section>
+<section id="input-output-file-description">
+<h2>Input/Output File Description<a class="headerlink" href="#input-output-file-description" title="Link to this heading"></a></h2>
+<p>The following input files (JSON or YAML format) are used:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file_geometry</span></code> - Description of the geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file_problem</span></code> - Description of the magnetic problem.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file_tolerance</span></code> - Description of the solver numerical options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file_viewer</span></code> - Options for the plots generated by the viewer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file_plotter</span></code> - Options for the plots generated by the plotter.</p></li>
+</ul>
+<p>The following files (JSON or Pickle format) are generated:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file_voxel</span></code> - Definition of the voxel structure.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file_solution</span></code> - Solution of the magnetic problem.</p></li>
+</ul>
+</section>
+<section id="geometry-preparation">
+<h2>Geometry Preparation<a class="headerlink" href="#geometry-preparation" title="Link to this heading"></a></h2>
+<p>The following <strong>open-source tools</strong> can be used to generate <strong>PNG</strong> files:</p>
+<ul class="simple">
+<li><p>Interactive software: <code class="docutils literal notranslate"><span class="pre">GIMP</span></code> or <code class="docutils literal notranslate"><span class="pre">Inkscape</span></code></p></li>
+<li><p>Scripting software: <code class="docutils literal notranslate"><span class="pre">ImageMagick</span></code> or <code class="docutils literal notranslate"><span class="pre">Pillow</span></code></p></li>
+</ul>
+<p>The following <strong>open-source tools</strong> can be used to generate <strong>STL</strong> files:</p>
+<ul class="simple">
+<li><p>Interactive software: <code class="docutils literal notranslate"><span class="pre">FreeCAD</span></code> or <code class="docutils literal notranslate"><span class="pre">Blender</span></code></p></li>
+<li><p>Scripting software: <code class="docutils literal notranslate"><span class="pre">CadQuery</span></code> or <code class="docutils literal notranslate"><span class="pre">OpenSCAD</span></code></p></li>
+<li><p>Mesh tools: <code class="docutils literal notranslate"><span class="pre">MeshLab</span></code> or <code class="docutils literal notranslate"><span class="pre">MeshFix</span></code></p></li>
+</ul>
+<p>The following <strong>open-source tools</strong> can be used to generate <strong>GERBER</strong> files:</p>
+<ul class="simple">
+<li><p>Interactive software: <code class="docutils literal notranslate"><span class="pre">KiCAD</span></code></p></li>
+<li><p>Scripting software: <code class="docutils literal notranslate"><span class="pre">gerber-writer</span></code></p></li>
+</ul>
+<p>The following <strong>open-source tools</strong> can be used to <strong>visualize 3D VTK</strong> files:</p>
+<ul class="simple">
+<li><p>Flexible and powerful: <code class="docutils literal notranslate"><span class="pre">ParaView</span></code></p></li>
+<li><p>Fast and minimalist: <code class="docutils literal notranslate"><span class="pre">F3D</span></code></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Thomas Guillod - Dartmouth College.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

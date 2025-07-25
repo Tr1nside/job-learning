@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; PyPEEC</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../_static/icon.png"/>
+    <link rel="canonical" href="https://pypeec.otvam.ch/content/examples.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a92a099e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gallery" href="gallery.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7a9aa3" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyPEEC - 5.7.1
+              <img src="../_static/sphinx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General Doc</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-examples">Running the Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stl-mesher-examples">STL Mesher Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shape-mesher-examples">Shape Mesher Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#png-mesher-examples">PNG Mesher Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#voxel-mesher-examples">Voxel Mesher Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="method.html">PEEC Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="warnings.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7a9aa3" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyPEEC - 5.7.1</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Examples</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
+<section id="running-the-examples">
+<h2>Running the Examples<a class="headerlink" href="#running-the-examples" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Extract the examples with the <code class="docutils literal notranslate"><span class="pre">pypeec</span> <span class="pre">examples</span></code> command.</p></li>
+<li><p>For running the examples with <strong>Python</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples_config.py</span></code> is used to select the example.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_mesher.py</span></code> runs the mesher.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_viewer.py</span></code> runs the viewer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_solver.py</span></code> runs the solver.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_plotter.py</span></code> runs the plotter.</p></li>
+</ul>
+</li>
+<li><p>For running the examples from the <strong>Shell</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples_config.sh</span></code> is used to select the example.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_mesher.sh</span></code> runs the mesher.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_viewer.sh</span></code> runs the viewer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_solver.sh</span></code> runs the solver.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_plotter.sh</span></code> runs the plotter.</p></li>
+</ul>
+</li>
+<li><p>For running the examples from a <strong>Jupyter notebook</strong>, use <code class="docutils literal notranslate"><span class="pre">notebook.ipynb</span></code>:</p>
+<ul>
+<li><p>JupyterLab should be installed (not included in the default environment).</p></li>
+<li><p>IPyWidgets, Trame, and ipympl are used for the rendering inside Jupyter notebooks.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="stl-mesher-examples">
+<h2>STL Mesher Examples<a class="headerlink" href="#stl-mesher-examples" title="Link to this heading"></a></h2>
+<section id="examples-stl-inductor-air">
+<h3>examples_stl/inductor_air<a class="headerlink" href="#examples-stl-inductor-air" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>STL files</strong>.</p></li>
+<li><p><strong>3D air-core spiral inductor</strong>.</p></li>
+</ul>
+<img alt="../_images/inductor_air.png" src="../_images/inductor_air.png" />
+</section>
+<section id="examples-stl-inductor-core">
+<h3>examples_stl/inductor_core<a class="headerlink" href="#examples-stl-inductor-core" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>STL files</strong>.</p></li>
+<li><p><strong>3D inductor with a magnetic E-core</strong>.</p></li>
+</ul>
+<img alt="../_images/inductor_core.png" src="../_images/inductor_core.png" />
+</section>
+<section id="examples-stl-inductor-toroid">
+<h3>examples_stl/inductor_toroid<a class="headerlink" href="#examples-stl-inductor-toroid" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>STL files</strong>.</p></li>
+<li><p><strong>3D inductor with a toroidal core</strong>.</p></li>
+</ul>
+<img alt="../_images/inductor_toroid.png" src="../_images/inductor_toroid.png" />
+</section>
+<section id="examples-stl-transformer-core">
+<h3>examples_stl/transformer_core<a class="headerlink" href="#examples-stl-transformer-core" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>STL files</strong>.</p></li>
+<li><p><strong>Transformer with two windings and a magnetic core</strong>.</p></li>
+</ul>
+<img alt="../_images/transformer_core.png" src="../_images/transformer_core.png" />
+</section>
+<section id="examples-stl-transformer-air">
+<h3>examples_stl/transformer_air<a class="headerlink" href="#examples-stl-transformer-air" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>STL files</strong>.</p></li>
+<li><p><strong>Planar air-core transformer with two windings</strong>.</p></li>
+<li><p>Extraction of the <strong>impedance matrix</strong> from the solution.</p></li>
+<li><p>Example for the extraction of the impedance matrix: <code class="docutils literal notranslate"><span class="pre">run_matrix.py</span></code>.</p></li>
+</ul>
+<img alt="../_images/transformer_air.png" src="../_images/transformer_air.png" />
+</section>
+</section>
+<section id="shape-mesher-examples">
+<h2>Shape Mesher Examples<a class="headerlink" href="#shape-mesher-examples" title="Link to this heading"></a></h2>
+<section id="examples-shape-busbar">
+<h3>examples_shape/busbar<a class="headerlink" href="#examples-shape-busbar" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>2D shapes</strong>.</p></li>
+<li><p><strong>Coplanar L-shaped busbar</strong>.</p></li>
+</ul>
+<img alt="../_images/busbar.png" src="../_images/busbar.png" />
+</section>
+<section id="examples-shape-coplanar">
+<h3>examples_shape/coplanar<a class="headerlink" href="#examples-shape-coplanar" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>2D shapes</strong>.</p></li>
+<li><p><strong>PCB with coplanar traces</strong>.</p></li>
+</ul>
+<img alt="../_images/coplanar.png" src="../_images/coplanar.png" />
+</section>
+<section id="examples-shape-parallel">
+<h3>examples_shape/parallel<a class="headerlink" href="#examples-shape-parallel" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>2D shapes</strong>.</p></li>
+<li><p><strong>Parallel wires with opposing currents</strong>.</p></li>
+</ul>
+<img alt="../_images/parallel.png" src="../_images/parallel.png" />
+</section>
+<section id="examples-shape-hole">
+<h3>examples_shape/hole<a class="headerlink" href="#examples-shape-hole" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>2D shapes</strong>.</p></li>
+<li><p><strong>Single PCB trace with a hole</strong>.</p></li>
+</ul>
+<img alt="../_images/hole.png" src="../_images/hole.png" />
+</section>
+<section id="examples-shape-wire">
+<h3>examples_shape/wire<a class="headerlink" href="#examples-shape-wire" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>2D shapes</strong>.</p></li>
+<li><p><strong>Single straight round wire</strong>.</p></li>
+</ul>
+<img alt="../_images/wire.png" src="../_images/wire.png" />
+</section>
+<section id="examples-shape-pwm">
+<h3>examples_shape/pwm<a class="headerlink" href="#examples-shape-pwm" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>2D shapes</strong>.</p></li>
+<li><p><strong>Planar spiral inductor</strong>.</p></li>
+<li><p><strong>Non-sinusoidal</strong> analysis with <strong>Fourier</strong> series.</p></li>
+<li><p>Example for the frequency domain analysis: <code class="docutils literal notranslate"><span class="pre">run_fourier.py</span></code>.</p></li>
+</ul>
+<img alt="../_images/pwm.png" src="../_images/pwm.png" />
+</section>
+</section>
+<section id="png-mesher-examples">
+<h2>PNG Mesher Examples<a class="headerlink" href="#png-mesher-examples" title="Link to this heading"></a></h2>
+<section id="examples-png-inductor-spiral">
+<h3>examples_png/inductor_spiral<a class="headerlink" href="#examples-png-inductor-spiral" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>PNG files</strong>.</p></li>
+<li><p><strong>Planar spiral inductor</strong>.</p></li>
+</ul>
+<img alt="../_images/inductor_spiral.png" src="../_images/inductor_spiral.png" />
+</section>
+<section id="examples-png-inductor-gap">
+<h3>examples_png/inductor_gap<a class="headerlink" href="#examples-png-inductor-gap" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>PNG files</strong>.</p></li>
+<li><p><strong>Gapped inductor with a magnetic E-core</strong>.</p></li>
+</ul>
+<img alt="../_images/inductor_gap.png" src="../_images/inductor_gap.png" />
+</section>
+<section id="examples-png-inductor-pot">
+<h3>examples_png/inductor_pot<a class="headerlink" href="#examples-png-inductor-pot" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>PNG files</strong>.</p></li>
+<li><p><strong>Pot-core inductor with external gap</strong>.</p></li>
+</ul>
+<img alt="../_images/inductor_pot.png" src="../_images/inductor_pot.png" />
+</section>
+<section id="examples-png-iron-core">
+<h3>examples_png/iron_core<a class="headerlink" href="#examples-png-iron-core" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>PNG files</strong>.</p></li>
+<li><p><strong>Iron magnetic core with a non-zero resistivity</strong>.</p></li>
+</ul>
+<img alt="../_images/iron_core.png" src="../_images/iron_core.png" />
+</section>
+<section id="examples-png-shield">
+<h3>examples_png/shield<a class="headerlink" href="#examples-png-shield" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>PNG files</strong>.</p></li>
+<li><p><strong>Conductor loop with a magnetic shield</strong>.</p></li>
+</ul>
+<img alt="../_images/shield.png" src="../_images/shield.png" />
+</section>
+<section id="examples-png-gerber">
+<h3>examples_png/gerber<a class="headerlink" href="#examples-png-gerber" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>PNG files</strong>.</p></li>
+<li><p><strong>PCB inductor defined with GERBER files</strong>.</p></li>
+<li><p>Generation of the PNG files from <strong>GERBER files</strong>.</p></li>
+<li><p>Example for parsing the GERBER files: <code class="docutils literal notranslate"><span class="pre">run_gerber.py</span></code>.</p></li>
+</ul>
+<img alt="../_images/gerber.png" src="../_images/gerber.png" />
+</section>
+</section>
+<section id="voxel-mesher-examples">
+<h2>Voxel Mesher Examples<a class="headerlink" href="#voxel-mesher-examples" title="Link to this heading"></a></h2>
+<section id="examples-voxel-slab">
+<h3>examples_voxel/slab<a class="headerlink" href="#examples-voxel-slab" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>voxel indices</strong>.</p></li>
+<li><p><strong>Simple slab conductor in free space</strong>.</p></li>
+</ul>
+<img alt="../_images/slab.png" src="../_images/slab.png" />
+</section>
+<section id="examples-voxel-transformer">
+<h3>examples_voxel/transformer<a class="headerlink" href="#examples-voxel-transformer" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>voxel indices</strong>.</p></li>
+<li><p><strong>Simple transformer with a short-circuited winding</strong>.</p></li>
+</ul>
+<img alt="../_images/transformer.png" src="../_images/transformer.png" />
+</section>
+<section id="examples-voxel-anisotropic">
+<h3>examples_voxel/anisotropic<a class="headerlink" href="#examples-voxel-anisotropic" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>voxel indices</strong>.</p></li>
+<li><p><strong>L-shaped conductor with anisotropic resistivity</strong>.</p></li>
+</ul>
+<img alt="../_images/anisotropic.png" src="../_images/anisotropic.png" />
+</section>
+<section id="examples-voxel-distributed">
+<h3>examples_voxel/distributed<a class="headerlink" href="#examples-voxel-distributed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>voxel indices</strong>.</p></li>
+<li><p><strong>Slab conductor with space dependent resistivity</strong>.</p></li>
+</ul>
+<img alt="../_images/distributed.png" src="../_images/distributed.png" />
+</section>
+<section id="examples-voxel-logo">
+<h3>examples_voxel/logo<a class="headerlink" href="#examples-voxel-logo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>voxel indices</strong>.</p></li>
+<li><p><strong>Simple geometry used for the PyPEEC logo</strong>.</p></li>
+</ul>
+<img alt="../_images/logo.png" src="../_images/logo.png" />
+</section>
+<section id="examples-voxel-core">
+<h3>examples_voxel/core<a class="headerlink" href="#examples-voxel-core" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Defined with <strong>voxel indices</strong>.</p></li>
+<li><p><strong>Simple slab conductor surrounded by a magnetic core</strong>.</p></li>
+<li><p><strong>Procedural generation</strong> of the voxel indices (1D and 3D).</p></li>
+<li><p>Example for generating the voxel indices: <code class="docutils literal notranslate"><span class="pre">run_voxel.py</span></code>.</p></li>
+</ul>
+<img alt="../_images/core.png" src="../_images/core.png" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Thomas Guillod - Dartmouth College.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Formats &mdash; PyPEEC</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../_static/icon.png"/>
+    <link rel="canonical" href="https://pypeec.otvam.ch/content/formats.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a92a099e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Known Issues" href="warnings.html" />
+    <link rel="prev" title="Technical Details" href="technical.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7a9aa3" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyPEEC - 5.7.1
+              <img src="../_static/sphinx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General Doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Doc</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="method.html">PEEC Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Details</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pypeec-workflow">PyPEEC Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geometry-file-format">Geometry File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-file-format">Problem File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-file-formats">Other File Formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="warnings.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7a9aa3" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyPEEC - 5.7.1</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File Formats</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-formats">
+<h1>File Formats<a class="headerlink" href="#file-formats" title="Link to this heading"></a></h1>
+<section id="pypeec-workflow">
+<h2>PyPEEC Workflow<a class="headerlink" href="#pypeec-workflow" title="Link to this heading"></a></h2>
+<figure class="align-default" id="id1">
+<img alt="../_images/workflow.png" src="../_images/workflow.png" />
+<figcaption>
+<p><span class="caption-text">Description of the PyPEEC workflow (mesher, viewer, solver, and plotter).
+The input files (geometry, problem, tolerance, plotter, and viewer) are either in JSON or YAML formats.
+The output files (voxel and solution) are either in JSON, MessagePack or Pickle formats.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="geometry-file-format">
+<h2>Geometry File Format<a class="headerlink" href="#geometry-file-format" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">file_geometry</span></code> file format is used by the mesher.</p></li>
+<li><p>This file contains the definition of the voxel structure.</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># mesher type</span>
+<span class="c1">#   - &quot;voxel&quot; for voxel index arrays</span>
+<span class="c1">#   - &quot;shape&quot; for 2D vector shapes</span>
+<span class="c1">#   - &quot;png&quot; for PNG files</span>
+<span class="c1">#   - &quot;stl&quot; for STL files</span>
+<span class="s">&quot;mesh_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&#39;voxel&#39;</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">&#39;shape&#39;</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">&#39;png&#39;</span><span class="nv">  </span><span class="s">or</span><span class="nv"> </span><span class="s">&#39;stl&#39;&quot;</span>
+
+<span class="c1"># definition of the voxel structure</span>
+<span class="c1">#   - specific for the different mesher types</span>
+<span class="c1">#   - format definition is located in separate files</span>
+<span class="s">&quot;data_voxelize&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+
+<span class="c1"># parameters defining the point cloud</span>
+<span class="s">&quot;data_point&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1"># check (or not) the validity of the point cloud</span>
+<span class="w">    </span><span class="s">&quot;check_cloud&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="c1"># remove (or not) the invalid points from the cloud</span>
+<span class="w">    </span><span class="s">&quot;filter_cloud&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="c1"># 2D array containing the points used for magnetic field evaluation</span>
+<span class="w">    </span><span class="c1">#   - the number of points (n_pts) can be zero.</span>
+<span class="w">    </span><span class="c1">#   - the array has the following size: (n_pts, 3)</span>
+<span class="w">    </span><span class="c1">#   - the points should be located outside the active voxels</span>
+<span class="w">    </span><span class="s">&quot;pts_cloud&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">+1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">+1.0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">+1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">+1.0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">+1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">+1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-1.0</span><span class="p p-Indicator">]</span>
+
+<span class="c1"># control the resampling of the voxel structure</span>
+<span class="s">&quot;data_resampling&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1"># reduce (or not) the voxel structure by removing unused voxels</span>
+<span class="w">    </span><span class="s">&quot;use_reduce&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="c1"># resample (or not) the voxel structure by subdividing voxels</span>
+<span class="w">    </span><span class="s">&quot;use_resample&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="c1"># array with resampling factors (x, y, and z directions)</span>
+<span class="w">    </span><span class="s">&quot;resampling_factor&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">]</span>
+
+<span class="c1"># parameters for resolving conflict between domains</span>
+<span class="s">&quot;data_conflict&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1"># perform (or not) the rule-based conflict resolution</span>
+<span class="w">    </span><span class="c1">#   - using the provided resolution rules to remove duplicated voxels</span>
+<span class="w">    </span><span class="c1">#   - the resolution rules are applied before the random resolution</span>
+<span class="w">    </span><span class="s">&quot;resolve_rules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="c1"># perform (or not) the random conflict resolution</span>
+<span class="w">    </span><span class="c1">#   - the duplicated voxels are randomly assigned to a unique domain</span>
+<span class="w">    </span><span class="c1">#   - the random resolution is performed after the application of the resolution rules</span>
+<span class="w">    </span><span class="s">&quot;resolve_random&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">    </span><span class="c1"># definition of the conflict resolution rules between domains</span>
+<span class="w">    </span><span class="c1">#   - during the voxelization, the same voxel can be assigned to several domains</span>
+<span class="w">    </span><span class="c1">#   - the shared voxels are located at the boundaries between domain</span>
+<span class="w">    </span><span class="c1">#   - the shared voxels are conflicts and should be assigned to a single domain</span>
+<span class="w">    </span><span class="c1">#   - list of dicts with the conflict resolution rules</span>
+<span class="w">    </span><span class="c1">#   - optional feature, the list can be empty if no conflict resolution is required</span>
+<span class="w">    </span><span class="c1">#   - conflict definition</span>
+<span class="w">    </span><span class="c1">#       - domain_resolve: list of domain names where the shared voxels should be removed</span>
+<span class="w">    </span><span class="c1">#       - domain_keep: list of domain names where the shared voxels should be kept</span>
+<span class="w">    </span><span class="s">&quot;conflict_rules&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;domain_resolve&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;domain_keep&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">]}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;domain_resolve&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;domain_keep&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">]}</span>
+
+<span class="c1"># parameters for checking the integrity of the voxel structure</span>
+<span class="s">&quot;data_integrity&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1"># check (or not) the connections between the domains</span>
+<span class="w">    </span><span class="c1">#   - check the connections between the adjacent domains</span>
+<span class="w">    </span><span class="c1">#   - check the connections between the connected components</span>
+<span class="w">    </span><span class="s">&quot;check_integrity&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="c1"># check if specified domains are connected to each other</span>
+<span class="w">    </span><span class="c1">#   - dict of dicts with the connection name and the connection definition</span>
+<span class="w">    </span><span class="c1">#   - optional feature, the dict can be empty without having an impact on the results</span>
+<span class="w">    </span><span class="c1">#   - check definition</span>
+<span class="w">    </span><span class="c1">#       - connected: boolean specified if the specified domains should be connected</span>
+<span class="w">    </span><span class="c1">#       - domain_group: list of lists of domains where the connections are checked</span>
+<span class="w">    </span><span class="c1">#           - the outer list domains are used for the connection checks</span>
+<span class="w">    </span><span class="c1">#           - the inner list domains are merged together</span>
+<span class="w">    </span><span class="s">&quot;domain_connected&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;connected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;connected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;domain_group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">]]}</span>
+<span class="w">        </span><span class="s">&quot;insulated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;connected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;domain_group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="s">&quot;dom_mag&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">]]}</span>
+
+<span class="w">    </span><span class="c1"># check if specified domains are adjacent to each other</span>
+<span class="w">    </span><span class="c1">#   - dict of dicts with the connection name and the connection definition</span>
+<span class="w">    </span><span class="c1">#   - optional feature, the dict can be empty without having an impact on the results</span>
+<span class="w">    </span><span class="c1">#   - check definition</span>
+<span class="w">    </span><span class="c1">#       - connected: boolean specified if the specified domains should be connected</span>
+<span class="w">    </span><span class="c1">#       - domain_group: list of lists of domains where the connections are checked</span>
+<span class="w">    </span><span class="c1">#           - the outer list domains are used for the connection checks</span>
+<span class="w">    </span><span class="c1">#           - the inner list domains are merged together</span>
+<span class="w">    </span><span class="s">&quot;domain_adjacent&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;connected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;connected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;domain_group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">]]}</span>
+<span class="w">        </span><span class="s">&quot;insulated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;connected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;domain_group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="s">&quot;dom_mag&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">]]}</span>
+</pre></div>
+</div>
+<section id="definition-from-index-arrays">
+<h3>Definition from Index Arrays<a class="headerlink" href="#definition-from-index-arrays" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># voxel definition type (&quot;voxel&quot; for index arrays)</span>
+<span class="s">&quot;mesh_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;voxel&quot;</span>
+
+<span class="c1"># definition of the voxel structure</span>
+<span class="s">&quot;data_voxelize&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1"># definition of the voxel structure</span>
+<span class="w">    </span><span class="c1">#   - n: array with the number of voxels (x, y, and z directions)</span>
+<span class="w">    </span><span class="c1">#   - d: array with the voxel dimensions (x, y, and z directions)</span>
+<span class="w">    </span><span class="c1">#   - c: array with the coordinates of the voxel structure center (x, y, and z directions)</span>
+<span class="w">    </span><span class="s">&quot;param&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;n&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;d&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10.0e-3</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;c&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="c1"># definition of the voxel indices of the different domains</span>
+<span class="w">    </span><span class="c1">#   - dict of arrays with the domain name and the voxel indices</span>
+<span class="w">    </span><span class="c1">#   - required information, the dict cannot be empty</span>
+<span class="w">    </span><span class="s">&quot;domain_def&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">6</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">9</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">13</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">14</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;dom_mag&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">36</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">37</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">38</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">39</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">40</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">41</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">42</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">43</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</section>
+<section id="definition-from-2d-vector-shapes">
+<h3>Definition from 2D Vector Shapes<a class="headerlink" href="#definition-from-2d-vector-shapes" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># voxel definition type (&quot;shape&quot; for 2D vector shapes)</span>
+<span class="s">&quot;mesh_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;shape&quot;</span>
+
+<span class="c1"># definition of the voxel structure</span>
+<span class="s">&quot;data_voxelize&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1"># definition of the voxel structure</span>
+<span class="w">    </span><span class="c1">#   - dx: voxel dimension for the x direction</span>
+<span class="w">    </span><span class="c1">#   - dy: voxel dimension for the y direction</span>
+<span class="w">    </span><span class="c1">#   - dz: voxel dimension for the z direction</span>
+<span class="w">    </span><span class="c1">#   - cz: coordinates of the voxel structure center for the z direction  (null for centering)</span>
+<span class="w">    </span><span class="c1">#   - simplify: tolerance for simplifying the shapes (null for disabling simplification)</span>
+<span class="w">    </span><span class="c1">#   - construct: grid size for constructing the shapes (null for default grid size)</span>
+<span class="w">    </span><span class="c1">#   - xy_min: array with the lower corner coordinates of the voxel structure</span>
+<span class="w">    </span><span class="c1">#       - vector with the x and y coordinates</span>
+<span class="w">    </span><span class="c1">#       - if null, the shape bounds are used</span>
+<span class="w">    </span><span class="c1">#   - xy_max: array with the upper corner coordinates of the voxel structure</span>
+<span class="w">    </span><span class="c1">#       - vector with the x and y coordinates</span>
+<span class="w">    </span><span class="c1">#       - if null, the shape bounds are used</span>
+<span class="w">    </span><span class="s">&quot;param&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;dx&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50.0e-6</span>
+<span class="w">        </span><span class="s">&quot;dy&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50.0e-6</span>
+<span class="w">        </span><span class="s">&quot;dz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50.0e-6</span>
+<span class="w">        </span><span class="s">&quot;cz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0e-6</span>
+<span class="w">        </span><span class="s">&quot;simplify&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-6</span>
+<span class="w">        </span><span class="s">&quot;construct&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-6</span>
+<span class="w">        </span><span class="s">&quot;xy_min&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-20e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-20e-3</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;xy_max&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">+20e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">+20e-3</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="c1"># definition of the layer stack (voxels in the z-direction)</span>
+<span class="w">    </span><span class="c1">#   - list of dicts with the definition of the layers</span>
+<span class="w">    </span><span class="c1">#   - required information, the list cannot be empty</span>
+<span class="w">    </span><span class="c1">#   - layer definition</span>
+<span class="w">    </span><span class="c1">#       - n_layer: number of voxels in the z-direction for the layer</span>
+<span class="w">    </span><span class="c1">#       - tag_layer: string with the name of the layer</span>
+<span class="w">    </span><span class="s">&quot;layer_stack&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;n_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;tag_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;mag&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;n_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;tag_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;insulation_mag&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;n_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;tag_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cond&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;n_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;tag_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;insulation_terminal&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;n_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;tag_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;terminal&quot;</span><span class="p p-Indicator">}</span>
+
+<span class="w">    </span><span class="c1"># definition of the shapes composing the different domains</span>
+<span class="w">    </span><span class="c1">#   - dict with the domain name and a list of shapes to be assembled</span>
+<span class="w">    </span><span class="c1">#   - required information, the dict cannot be empty</span>
+<span class="w">    </span><span class="c1">#   - domain definition</span>
+<span class="w">    </span><span class="c1">#       - shape_layer: list of layers where the shape is located</span>
+<span class="w">    </span><span class="c1">#       - shape_operation: composition operation for assembling the shape (&quot;add&quot; or &quot;sub&quot;)</span>
+<span class="w">    </span><span class="c1">#       - shape_type: type of the shape (&quot;pad&quot; or &quot;trace&quot; or &quot;polygon&quot;)</span>
+<span class="w">    </span><span class="c1">#       - shape_data: data containing the shape geometry</span>
+<span class="w">    </span><span class="c1">#           - &quot;pad&quot;</span>
+<span class="w">    </span><span class="c1">#               - coord: array with the 2D coordinates composing the shape</span>
+<span class="w">    </span><span class="c1">#               - diameter: diameter of the pads</span>
+<span class="w">    </span><span class="c1">#           - &quot;trace&quot;</span>
+<span class="w">    </span><span class="c1">#               - coord: array with the 2D coordinates composing the shape</span>
+<span class="w">    </span><span class="c1">#               - width: thickness of the traces</span>
+<span class="w">    </span><span class="c1">#           - &quot;polygon&quot;</span>
+<span class="w">    </span><span class="c1">#               - coord_shell: array with the 2D coordinates composing the shape</span>
+<span class="w">    </span><span class="c1">#               - coord_holes: list of arrays with the 2D coordinates of the holes</span>
+<span class="w">    </span><span class="c1">#               - buffer: thickness of the buffer around the polygons</span>
+<span class="w">    </span><span class="s">&quot;geometry_shape&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span>
+<span class="w">                </span><span class="s">&quot;shape_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;cond&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="s">&quot;shape_operation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;add&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;trace&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_data&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">&quot;width&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5e-3</span>
+<span class="w">                    </span><span class="s">&quot;coord&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">0.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">5.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5.0e-3</span><span class="p p-Indicator">]]</span>
+<span class="w">        </span><span class="s">&quot;dom_mag&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span>
+<span class="w">                </span><span class="s">&quot;shape_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;mag&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="s">&quot;shape_operation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;add&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_data&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">&quot;buffer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">                    </span><span class="s">&quot;coord_shell&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">0.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">5.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">5.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5.0e-3</span><span class="p p-Indicator">]]</span>
+<span class="w">                    </span><span class="s">&quot;coord_holes&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">1.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.0e-3</span><span class="p p-Indicator">]]</span>
+<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">3.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">4.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">4.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4.0e-3</span><span class="p p-Indicator">]]</span>
+<span class="w">            </span><span class="p p-Indicator">-</span>
+<span class="w">                </span><span class="s">&quot;shape_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;mag&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="s">&quot;shape_operation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sub&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;polygon&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_data&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">&quot;buffer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">                    </span><span class="s">&quot;coord_shell&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">1.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3.0e-3</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3.0e-3</span><span class="p p-Indicator">]]</span>
+<span class="w">                    </span><span class="s">&quot;coord_holes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">        </span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span>
+<span class="w">                </span><span class="s">&quot;shape_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;insulation_terminal&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;terminal&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="s">&quot;shape_operation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;add&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;pad&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_data&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">&quot;diameter&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.7e-3</span>
+<span class="w">                    </span><span class="s">&quot;coord&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">0.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0e-3</span><span class="p p-Indicator">]]</span>
+<span class="w">        </span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span>
+<span class="w">                </span><span class="s">&quot;shape_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;insulation_terminal&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;terminal&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="s">&quot;shape_operation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;add&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;pad&quot;</span>
+<span class="w">                </span><span class="s">&quot;shape_data&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">&quot;diameter&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.7e-3</span>
+<span class="w">                    </span><span class="s">&quot;coord&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">5.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5.0e-3</span><span class="p p-Indicator">]]</span>
+</pre></div>
+</div>
+</section>
+<section id="definition-from-png-files">
+<h3>Definition from PNG Files<a class="headerlink" href="#definition-from-png-files" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># voxel definition type (&quot;png&quot; for PNG files)</span>
+<span class="s">&quot;mesh_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;png&quot;</span>
+
+<span class="c1"># definition of the voxel structure</span>
+<span class="s">&quot;data_voxelize&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1"># definition of the voxel structure</span>
+<span class="w">    </span><span class="c1">#   - d: array with the voxel dimensions (x, y, and z directions)</span>
+<span class="w">    </span><span class="c1">#   - c: array with the coordinates of the voxel structure center (x, y, and z directions)</span>
+<span class="w">    </span><span class="c1">#   - size: array with the size of the images (number of voxels in the x and y direction)</span>
+<span class="w">    </span><span class="s">&quot;param&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;d&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10.0e-3</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;c&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;size&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">49</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">49</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="c1"># definition of the mapping between the image color and the different domains</span>
+<span class="w">    </span><span class="c1">#   - dict with the domain name and the specified colors</span>
+<span class="w">    </span><span class="c1">#   - required information, the dict cannot be empty</span>
+<span class="w">    </span><span class="c1">#   - the colors are specified with an array of colors (RGBA format)</span>
+<span class="w">    </span><span class="s">&quot;domain_color&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">255</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">]]</span>
+<span class="w">        </span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">]]</span>
+<span class="w">        </span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">]]</span>
+<span class="w">        </span><span class="s">&quot;dom_mag&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">]]</span>
+
+<span class="w">    </span><span class="c1"># definition of the layer stack (voxels in the z-direction)</span>
+<span class="w">    </span><span class="c1">#   - list of dicts with the definition of the layers</span>
+<span class="w">    </span><span class="c1">#   - required information, the list cannot be empty</span>
+<span class="w">    </span><span class="c1">#   - layer definition</span>
+<span class="w">    </span><span class="c1">#       - n_layer: number of voxels in the z-direction for the layer</span>
+<span class="w">    </span><span class="c1">#       - filename_list: list of strings with the PNG files defining the layer</span>
+<span class="w">    </span><span class="s">&quot;layer_stack&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;n_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;filename_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;png/layer_bottom.png&quot;</span><span class="p p-Indicator">]}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;n_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;filename_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;png/layer_mid.png&quot;</span><span class="p p-Indicator">]}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;n_layer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;filename_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;png/layer_top.png&quot;</span><span class="p p-Indicator">]}</span>
+</pre></div>
+</div>
+</section>
+<section id="definition-from-stl-files">
+<h3>Definition from STL Files<a class="headerlink" href="#definition-from-stl-files" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># voxel definition type (&quot;stl&quot; for STL files)</span>
+<span class="s">&quot;mesh_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;stl&quot;</span>
+
+<span class="c1"># definition of the voxel structure</span>
+<span class="s">&quot;data_voxelize&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1"># definition of the voxel structure</span>
+<span class="w">    </span><span class="c1">#   - d: array with the voxel dimensions (x, y, and z directions)</span>
+<span class="w">    </span><span class="c1">#   - xyz_min: array with the lower corner coordinates of the voxel structure</span>
+<span class="w">    </span><span class="c1">#       - vector with the x, y, and z coordinates</span>
+<span class="w">    </span><span class="c1">#       - if null, the STL mesh bounds are used</span>
+<span class="w">    </span><span class="c1">#   - xyz_max: array with the upper corner coordinates of the voxel structure</span>
+<span class="w">    </span><span class="c1">#       - vector with the x, y, and z coordinates</span>
+<span class="w">    </span><span class="c1">#       - if null, the STL mesh bounds are used</span>
+<span class="w">    </span><span class="c1">#   - check: boolean parameters for checking the STL mesh integrity</span>
+<span class="w">    </span><span class="c1">#       - if true, the STL mesh should represent a closed surface</span>
+<span class="w">    </span><span class="c1">#       - if false, the surface status of the STL mesh is not checked</span>
+<span class="w">    </span><span class="c1">#   - thr: threshold for the voxelization (in order to keep/exclude voxels)</span>
+<span class="w">    </span><span class="c1">#       - the volume fraction located inside the STL mesh is computed for each voxel</span>
+<span class="w">    </span><span class="c1">#       - if the fraction is greater than the threshold, the voxel is added to the structure</span>
+<span class="w">    </span><span class="c1">#   - pts: number of test points used for the voxelization (for each voxel)</span>
+<span class="w">    </span><span class="c1">#       - if greater than one, several points are used (pts^3 points are created)</span>
+<span class="w">    </span><span class="c1">#       - if equal to one, a single test point is used (in the center the voxel)</span>
+<span class="w">    </span><span class="c1">#       - the Gauss-Legendre quadrature is used to span the points</span>
+<span class="w">    </span><span class="s">&quot;param&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;d&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">10.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10.0e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10.0e-3</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;xyz_min&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-20e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-20e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-20e-3</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;xyz_max&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">+20e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">+20e-3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">+20e-3</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;check&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="s">&quot;thr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">        </span><span class="s">&quot;pts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="w">    </span><span class="c1"># definition of the STL files of the different domains</span>
+<span class="w">    </span><span class="c1">#   - dict with the domain name and the STL files</span>
+<span class="w">    </span><span class="c1">#   - required information, the dict cannot be empty</span>
+<span class="w">    </span><span class="c1">#   - domain definition</span>
+<span class="w">    </span><span class="c1">#       - list of STL meshes composing the domain</span>
+<span class="w">    </span><span class="c1">#       - scale: scaling factor for specifying the unit of the STL meshes (before offsetting)</span>
+<span class="w">    </span><span class="c1">#       - offset: array with offsets for translating the STL meshes (after scaling)</span>
+<span class="w">    </span><span class="c1">#       - filename: string with the STL filename</span>
+<span class="w">    </span><span class="s">&quot;domain_stl&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;scale&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;offset&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;filename&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;stl/dom_src.stl&quot;</span><span class="p p-Indicator">}]</span>
+<span class="w">        </span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;scale&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;offset&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;filename&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;stl/dom_cond.stl&quot;</span><span class="p p-Indicator">}]</span>
+<span class="w">        </span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;scale&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;offset&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;filename&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;stl/dom_sink.stl&quot;</span><span class="p p-Indicator">}]</span>
+<span class="w">        </span><span class="s">&quot;dom_mag&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;scale&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;offset&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;filename&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;stl/dom_mag.stl&quot;</span><span class="p p-Indicator">}]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="problem-file-format">
+<h2>Problem File Format<a class="headerlink" href="#problem-file-format" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">file_problem</span></code> file format is used by the solver.</p></li>
+<li><p>This file contains the definition of the magnetic problem to be solved.</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># material definition</span>
+<span class="c1">#   - dict of dicts with the material name and the material definition</span>
+<span class="c1">#   - required information, the dict cannot be empty</span>
+<span class="c1">#   - electric and magnetic materials can be defined</span>
+<span class="c1">#   - material definition</span>
+<span class="c1">#       - domain_list: list of domains with the specified material</span>
+<span class="c1">#       - material_type: material type (&quot;electric&quot; or &quot;magnetic&quot; or &quot;electromagnetic&quot;)</span>
+<span class="c1">#           - &quot;electric&quot;: material with a finite conductivity (with a zero susceptibility)</span>
+<span class="c1">#           - &quot;magnetic&quot;: material with a finite susceptibility (with a zero conductivity)</span>
+<span class="c1">#           - &quot;electromagnetic&quot;: material with a finite susceptibility and permeability</span>
+<span class="c1">#       - orientation_type: material type (&quot;isotropic&quot; or &quot;anisotropic&quot;)</span>
+<span class="c1">#           - &quot;isotropic&quot;: the material parameters are anisotropic</span>
+<span class="c1">#           - &quot;anisotropic&quot;: the material parameters anisotropic</span>
+<span class="c1">#       - var_type: type of material parameters (&quot;lumped&quot; or &quot;distributed&quot;)</span>
+<span class="c1">#           - &quot;lumped&quot;: the material parameters are homogeneous</span>
+<span class="c1">#           - &quot;distributed&quot;: the material parameters are space-dependent</span>
+<span class="s">&quot;material_def&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="s">&quot;mat_electric&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;domain_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;dom_cond&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;material_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;electric&quot;</span>
+<span class="w">        </span><span class="s">&quot;orientation_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;isotropic&quot;</span>
+<span class="w">        </span><span class="s">&quot;var_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;lumped&quot;</span>
+<span class="w">    </span><span class="s">&quot;mat_magnetic&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;domain_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_mag&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;material_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;magnetic&quot;</span>
+<span class="w">        </span><span class="s">&quot;orientation_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;isotropic&quot;</span>
+<span class="w">        </span><span class="s">&quot;var_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;lumped&quot;</span>
+
+<span class="c1"># source definition</span>
+<span class="c1">#   - dict of dicts with the source name and the source definition</span>
+<span class="c1">#   - required information, the dict cannot be empty</span>
+<span class="c1">#   - sources can only be defined on electric material domains</span>
+<span class="c1">#   - source definition</span>
+<span class="c1">#       - domain_list: list of domains with the specified source</span>
+<span class="c1">#       - source_type: source type (&quot;current&quot; or &quot;voltage&quot;)</span>
+<span class="c1">#       - var_type: type of source parameters (&quot;lumped&quot; or &quot;distributed&quot;)</span>
+<span class="c1">#           - &quot;lumped&quot;: the source parameters are homogeneous</span>
+<span class="c1">#           - &quot;distributed&quot;: the source parameters are space-dependent</span>
+<span class="s">&quot;source_def&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="s">&quot;src&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;domain_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_src&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;source_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;current&quot;</span>
+<span class="w">        </span><span class="s">&quot;var_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;lumped&quot;</span>
+<span class="w">    </span><span class="s">&quot;sink&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;domain_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dom_sink&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="s">&quot;source_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;voltage&quot;</span>
+<span class="w">        </span><span class="s">&quot;var_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;lumped&quot;</span>
+
+<span class="c1"># definition of the sweep configurations and the sweep parameters</span>
+<span class="c1">#   - dict of dicts with the material and source parameters</span>
+<span class="c1">#   - required information, the dict cannot be empty</span>
+<span class="c1">#   - each dict represents a specific sweep configuration</span>
+<span class="c1">#   - sweep parameters</span>
+<span class="c1">#       - init: the dependency is used as an initial guess for the solver</span>
+<span class="c1">#           - complex (tree-like) dependencies can be used</span>
+<span class="c1">#           - if null, no initial guess is used for the solver</span>
+<span class="c1">#       - param: dict with the frequency, material, and source parameters</span>
+<span class="c1">#           - freq: operating frequency for the problem (DC or AC)</span>
+<span class="c1">#           - material_val: material parameters</span>
+<span class="c1">#               - dict of dicts with the material name and the material definition</span>
+<span class="c1">#               - electric material definition</span>
+<span class="c1">#                   - rho_re: material real resistivity (should be positive)</span>
+<span class="c1">#                   - rho_im: material imaginary resistivity (should be positive)</span>
+<span class="c1">#                   - definition: rho = rho_re + 1j*rho_im</span>
+<span class="c1">#               - magnetic material definition</span>
+<span class="c1">#                   - chi_re: material real susceptibility (should be positive)</span>
+<span class="c1">#                   - chi_im: material imaginary susceptibility (should be positive)</span>
+<span class="c1">#                   - definition: chi = chi_re - 1j*chi_im</span>
+<span class="c1">#               - electromagnetic material definition</span>
+<span class="c1">#                   - rho_re: material real resistivity (should be positive)</span>
+<span class="c1">#                   - rho_im: material imaginary resistivity (should be positive)</span>
+<span class="c1">#                   - chi_re: material real susceptibility (should be positive)</span>
+<span class="c1">#                   - chi_im: material imaginary susceptibility (should be positive)</span>
+<span class="c1">#                   - definition: rho = rho_re + 1j*rho_im</span>
+<span class="c1">#                   - definition: chi = chi_re - 1j*chi_im</span>
+<span class="c1">#               - material value</span>
+<span class="c1">#                   - &quot;lumped&quot; and &quot;isotropic&quot;: scalar</span>
+<span class="c1">#                       - the material parameters are isotropic</span>
+<span class="c1">#                       - the same parameters are used for all the voxels</span>
+<span class="c1">#                       - scalar values are used</span>
+<span class="c1">#                   - &quot;lumped&quot; and &quot;anisotropic&quot;: array</span>
+<span class="c1">#                       - the array contains the anisotropic parameters</span>
+<span class="c1">#                       - the same parameters are used for all the voxels</span>
+<span class="c1">#                       - arrays with the following size are used: (3)</span>
+<span class="c1">#                   - &quot;distributed&quot; and &quot;isotropic&quot;: array</span>
+<span class="c1">#                       - the material parameters are isotropic</span>
+<span class="c1">#                       - different parameters are used for each voxel</span>
+<span class="c1">#                       - arrays with the following size are used: (n_voxel)</span>
+<span class="c1">#                   - &quot;distributed&quot; and &quot;anisotropic&quot;: 2D array</span>
+<span class="c1">#                       - the material parameters are anisotropic</span>
+<span class="c1">#                       - different parameters are used for each voxel</span>
+<span class="c1">#                       - arrays with the following size are used: (n_voxel, 3)</span>
+<span class="c1">#           - source_val: source parameters</span>
+<span class="c1">#               - dict of dicts with the source name and the source definition</span>
+<span class="c1">#               - current source definition</span>
+<span class="c1">#                   - I_re: current source value (real part)</span>
+<span class="c1">#                   - I_im: current source value (imaginary part)</span>
+<span class="c1">#                   - Y_re: current internal admittance (real part)</span>
+<span class="c1">#                   - Y_im: current internal admittance (imaginary part)</span>
+<span class="c1">#                   - definition: I = I_re + 1j*I_im</span>
+<span class="c1">#                   - definition: Y = Y_re + 1j*Y_im</span>
+<span class="c1">#               - voltage source definition</span>
+<span class="c1">#                   - V_re: voltage source value (real part)</span>
+<span class="c1">#                   - V_im: voltage source value (imaginary part)</span>
+<span class="c1">#                   - Z_re: voltage internal impedance (real part)</span>
+<span class="c1">#                   - Z_im: voltage internal impedance (imaginary part)</span>
+<span class="c1">#                   - definition: V = V_re + 1j*V_im</span>
+<span class="c1">#                   - definition: Z = Z_re + 1j*Z_im</span>
+<span class="c1">#               - source values</span>
+<span class="c1">#                   - &quot;lumped&quot;: scalar</span>
+<span class="c1">#                       - the source is using lumped parameters</span>
+<span class="c1">#                       - the same parameters are used for all the voxels</span>
+<span class="c1">#                       - scalar values are used</span>
+<span class="c1">#                   - &quot;distributed&quot;: array</span>
+<span class="c1">#                       - the source is using distributed parameters</span>
+<span class="c1">#                       - different parameters are used for each voxel</span>
+<span class="c1">#                       - arrays with the following size are used: (n_voxel)</span>
+<span class="s">&quot;sweep_solver&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="s">&quot;sim_dc&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;init&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">        </span><span class="s">&quot;param&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="s">&quot;freq&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">            </span><span class="s">&quot;material_val&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">&quot;mat_electric&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;rho_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.0e-8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;rho_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">                </span><span class="s">&quot;mat_magnetic&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;chi_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">100.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;chi_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10.0</span><span class="p p-Indicator">}</span>
+<span class="w">            </span><span class="s">&quot;source_val&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">&quot;src&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;I_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;I_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Y_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Y_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">}</span>
+<span class="w">                </span><span class="s">&quot;sink&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;V_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;V_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Z_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Z_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="s">&quot;sim_ac&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">&quot;init&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sim_dc</span>
+<span class="w">        </span><span class="s">&quot;param&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="s">&quot;freq&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e+3</span>
+<span class="w">            </span><span class="s">&quot;material_val&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">&quot;mat_electric&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;rho_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.0e-8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;rho_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">                </span><span class="s">&quot;mat_magnetic&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;chi_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">100.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;chi_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10.0</span><span class="p p-Indicator">}</span>
+<span class="w">            </span><span class="s">&quot;source_val&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">&quot;src&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;I_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;I_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Y_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Y_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">}</span>
+<span class="w">                </span><span class="s">&quot;sink&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;V_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;V_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Z_re&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Z_im&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</section>
+<section id="other-file-formats">
+<h2>Other File Formats<a class="headerlink" href="#other-file-formats" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">file_tolerance</span></code> format is documented in <code class="docutils literal notranslate"><span class="pre">examples/config/tolerance.yaml</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">file_viewer</span></code> format is documented in <code class="docutils literal notranslate"><span class="pre">examples/config/viewer.yaml</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">file_plotter</span></code> format is documented in <code class="docutils literal notranslate"><span class="pre">examples/config/plotter.yaml</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Thomas Guillod - Dartmouth College.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

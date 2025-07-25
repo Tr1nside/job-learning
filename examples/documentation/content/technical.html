@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Details &mdash; PyPEEC</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../_static/icon.png"/>
+    <link rel="canonical" href="https://pypeec.otvam.ch/content/technical.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a92a099e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File Formats" href="formats.html" />
+    <link rel="prev" title="PEEC Method" href="method.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7a9aa3" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyPEEC - 5.7.1
+              <img src="../_static/sphinx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General Doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Doc</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="method.html">PEEC Method</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Technical Details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies-and-platforms">Dependencies and Platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logger-and-data-serialization">Logger and Data Serialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#packaging-and-environment">Packaging and Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tests-and-coverage">Tests and Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-and-bug-report">Contributing and Bug Report</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="warnings.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7a9aa3" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyPEEC - 5.7.1</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Technical Details</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="technical-details">
+<h1>Technical Details<a class="headerlink" href="#technical-details" title="Link to this heading"></a></h1>
+<section id="dependencies-and-platforms">
+<h2>Dependencies and Platforms<a class="headerlink" href="#dependencies-and-platforms" title="Link to this heading"></a></h2>
+<p><strong>PyPEEC</strong> is entirely programmed in <strong>Python 3</strong> and has the following <strong>dependencies</strong>:</p>
+<ul class="simple">
+<li><p>SciLogger and SciSave (logging and serialization)</p></li>
+<li><p>NumPy, SciPy, and Joblib (basic numerical computing libraries)</p></li>
+<li><p>Shapely and Rasterio (only used for the mesher, 2D shape manipulation)</p></li>
+<li><p>Pillow (only used for the mesher, 2D image manipulation)</p></li>
+<li><p>VTK and PyVista (only used for the mesher, 3D shape manipulation)</p></li>
+</ul>
+<p>Additionally, the following <strong>libraries</strong> are used for the <strong>plotter</strong> and <strong>viewer</strong>:</p>
+<ul class="simple">
+<li><p>Matplotlib and QtPy (2D plots)</p></li>
+<li><p>VTK, PyVista, PyVistaQt, and QtPy (3D plots)</p></li>
+</ul>
+<p>The following <strong>optional packages</strong> can be used to <strong>speed up</strong> the solver:</p>
+<ul class="simple">
+<li><p>PyAMG (Python Algebraic Multigrid)</p></li>
+<li><p>MKL/FFT (available through mkl_fft)</p></li>
+<li><p>MKL/PARDISO (available through Pydiso)</p></li>
+<li><p>FFTW (available through pyFFTW)</p></li>
+<li><p>CuPy (using GPUs through CUDA)</p></li>
+</ul>
+<p>The following <strong>optional packages</strong> are required for <strong>Jupyter notebooks</strong>:</p>
+<ul class="simple">
+<li><p>JupyterLab / Server Proxy</p></li>
+<li><p>IPyWidgets / ipympl</p></li>
+<li><p>Trame / Vuetify / VTK</p></li>
+</ul>
+<p>PyPEEC is known to <strong>work</strong> with the following <strong>platforms</strong>:</p>
+<ul class="simple">
+<li><p>Linux on x86/x64/X11/glibc</p></li>
+<li><p>Linux on ARM64/X11/glibc</p></li>
+<li><p>Apple macOS on x86/x64</p></li>
+<li><p>Apple macOS on ARM64</p></li>
+<li><p>MS Windows on x86/x64</p></li>
+</ul>
+<p>Some more <strong>details</strong> on the supported <strong>platforms</strong>:</p>
+<ul class="simple">
+<li><p>The main <strong>target platform</strong> of PyPEEC is <strong>Linux</strong> on x86/x64/X11/glibc.</p></li>
+<li><p>PyPEEC is a <strong>pure python package</strong> and should work on any platform.</p></li>
+<li><p>The following <strong>Python versions</strong> are compatible: 3.10, 3.11, 3.12, and 3.13.</p></li>
+<li><p>Any <strong>CUDA and CuPy</strong> compatible <strong>GPU</strong> is supported.</p></li>
+</ul>
+</section>
+<section id="logger-and-data-serialization">
+<h2>Logger and Data Serialization<a class="headerlink" href="#logger-and-data-serialization" title="Link to this heading"></a></h2>
+<p>For the logging, PyPEEC is using <strong>SciLogger</strong>:</p>
+<ul class="simple">
+<li><p>The logger configuration files can be set with the  <code class="docutils literal notranslate"><span class="pre">SCILOGGER</span></code> environment variable.</p></li>
+<li><p>More information on the logging module: <a class="reference external" href="https://github.com/otvam/scilogger">scilogger</a>.</p></li>
+</ul>
+<p>For the serialization, PyPEEC is using <strong>SciSave</strong>:</p>
+<ul class="simple">
+<li><p>The input/configuration files are either JSON or YAML files.</p></li>
+<li><p>The output/data files are either JSON, MessagePack or Pickle files.</p></li>
+<li><p>Pickle/MessagePack files are faster than JSON for large output/data files.</p></li>
+<li><p>More information on the serialization module: <a class="reference external" href="https://github.com/otvam/scisave">scisave</a>.</p></li>
+</ul>
+</section>
+<section id="packaging-and-environment">
+<h2>Packaging and Environment<a class="headerlink" href="#packaging-and-environment" title="Link to this heading"></a></h2>
+<p>The following files are describing the packages and dependencies:</p>
+<ul class="simple">
+<li><p>Definition of the Python package: <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p></li>
+<li><p>Dockerfile for building the Docker image: <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>.</p></li>
+<li><p>Feedstock recipe for conda-forge: <a class="reference external" href="https://github.com/conda-forge/pypeec-feedstock">feedstock</a>.</p></li>
+</ul>
+<p>The development environment is defined in <code class="docutils literal notranslate"><span class="pre">conda.yaml</span></code>:</p>
+<ul class="simple">
+<li><p>Contains all the required and optional dependencies.</p></li>
+<li><p>Contains the packaging/development tools.</p></li>
+<li><p>All the version numbers are pinned.</p></li>
+<li><p>Tested with Linux x86/x64/X11/glibc.</p></li>
+</ul>
+<p>The following scripts are used for the packaging and releasing processes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/run_clean.sh</span></code> - Clean all the autogenerated and temporary data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/run_build.sh</span></code> - Build the Python package and build the HTML documentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/run_release.sh</span></code> - Create a release (tag, release, package, and documentation).</p></li>
+</ul>
+</section>
+<section id="tests-and-coverage">
+<h2>Tests and Coverage<a class="headerlink" href="#tests-and-coverage" title="Link to this heading"></a></h2>
+<p>PyPEEC is using different tests to check for potential regressions:</p>
+<ul class="simple">
+<li><p>The tests are located in the <code class="docutils literal notranslate"><span class="pre">tests</span></code> folder.</p></li>
+<li><p>The tests are using the <code class="docutils literal notranslate"><span class="pre">unittest</span></code> framework.</p></li>
+<li><p>The tests are covering all the main functionalities.</p></li>
+<li><p>The tests are using the examples and the tutorial to check the code.</p></li>
+<li><p>Only integration tests are currently implemented (no unit tests).</p></li>
+</ul>
+<p>These files are used to run the code quality checks and the tests:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/run_ruff.sh</span></code> - Run the code quality checks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/run_tests.sh</span></code> - Run all the integration tests.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/run_coverage.sh</span></code> - Run a code coverage analysis.</p></li>
+</ul>
+<p>The following <strong>automated tests</strong> are performed:</p>
+<ul class="simple">
+<li><p>Test the latest version of the released Conda and PyPI packages.</p></li>
+<li><p>Test the Conda and PyPI environments with the current Git code.</p></li>
+</ul>
+<p>The following <strong>platforms</strong> are considered for the <strong>automated tests</strong>:</p>
+<ul class="simple">
+<li><p>Linux / Ubuntu on x86/x64</p></li>
+<li><p>Microsoft / Windows on x86/x64</p></li>
+<li><p>Apple / macOS on ARM64</p></li>
+</ul>
+<p>The following <strong>Python versions</strong> are considered for the <strong>automated tests</strong>:</p>
+<ul class="simple">
+<li><p>CPython 3.10</p></li>
+<li><p>CPython 3.11</p></li>
+<li><p>CPython 3.12</p></li>
+<li><p>CPython 3.13</p></li>
+</ul>
+</section>
+<section id="contributing-and-bug-report">
+<h2>Contributing and Bug Report<a class="headerlink" href="#contributing-and-bug-report" title="Link to this heading"></a></h2>
+<p>PyPEEC is gladly accepting contributions (code, benchmark, packages, or tests).
+Non-code contributions (documentation, examples, or tutorials) are particularly welcomed.
+For large contributions, please first discuss the changes in the issue tracker.</p>
+<p>For the bug reports, please report the following information:</p>
+<ul class="simple">
+<li><p>The <strong>version of PyPEEC and Python</strong>.</p></li>
+<li><p>The <strong>operating system/platform/hardware</strong>.</p></li>
+<li><p>A <strong>clear and concise description</strong> of the bug.</p></li>
+<li><p>A <strong>minimal working example</strong> for the bug.</p></li>
+<li><p>For PyVista-related bugs, please include the <code class="docutils literal notranslate"><span class="pre">pyvista.Report</span></code> output.</p></li>
+<li><p>For NumPy-related bugs, please include the <code class="docutils literal notranslate"><span class="pre">numpy.show_config</span></code> output.</p></li>
+<li><p>For SciPy-related bugs, please include the <code class="docutils literal notranslate"><span class="pre">scipy.show_config</span></code> output.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Thomas Guillod - Dartmouth College.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

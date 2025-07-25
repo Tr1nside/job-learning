@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEEC Method &mdash; PyPEEC</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../_static/icon.png"/>
+    <link rel="canonical" href="https://pypeec.otvam.ch/content/method.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a92a099e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Technical Details" href="technical.html" />
+    <link rel="prev" title="Workflow" href="workflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7a9aa3" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyPEEC - 5.7.1
+              <img src="../_static/sphinx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General Doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Doc</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PEEC Method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#peec-introduction">PEEC Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#peec-for-static-problems">PEEC for Static Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#peec-for-quasi-static-problems">PEEC for Quasi-Static Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fft-accelerated-peec-method">FFT-Accelerated PEEC Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-optimization">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="warnings.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7a9aa3" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyPEEC - 5.7.1</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PEEC Method</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="peec-method">
+<h1>PEEC Method<a class="headerlink" href="#peec-method" title="Link to this heading"></a></h1>
+<section id="peec-introduction">
+<h2>PEEC Introduction<a class="headerlink" href="#peec-introduction" title="Link to this heading"></a></h2>
+<p>The PEEC method is an integral equation method proposed in 1974 (<a class="reference external" href="https://doi.org/10.1109/TMTT.1974.1128204">paper</a>).
+The fundamental idea is to represent the field simulation problem with a very large distributed equivalent circuit.
+In order to explain the PEEC method step-by-step, a U-shaped busbar (<a class="reference internal" href="#fig-1"><span class="std std-ref">Fig. 1</span></a>) is considered.
+For this geometry, an inhomogeneous current distribution is expected (current crowding in the corners).</p>
+<figure class="align-default" id="id1">
+<span id="fig-1"></span><img alt="../_images/peec_1.png" src="../_images/peec_1.png" />
+<figcaption>
+<p><span class="caption-text">Fig. 1 - Example problem: U-shaped busbar with a current source.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="peec-for-static-problems">
+<h2>PEEC for Static Problems<a class="headerlink" href="#peec-for-static-problems" title="Link to this heading"></a></h2>
+<p>In order to get the static solution (DC solution) of the problem, a discretization of the geometry is required.
+The geometry is divided into simple cells and the resistance of each cell can be analytically calculated.
+Then, the PEEC problem can be formulated with a distributed equivalent circuit (<a class="reference internal" href="#fig-2"><span class="std std-ref">Fig. 2</span></a>).
+Finally, the circuit is solved and the current and voltage distribution is obtained.</p>
+<figure class="align-default" id="id2">
+<span id="fig-2"></span><img alt="../_images/peec_2.png" src="../_images/peec_2.png" />
+<figcaption>
+<p><span class="caption-text">Fig. 2 - PEEC equivalent circuit and solution for the static problem.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="peec-for-quasi-static-problems">
+<h2>PEEC for Quasi-Static Problems<a class="headerlink" href="#peec-for-quasi-static-problems" title="Link to this heading"></a></h2>
+<p>For the quasi-static solution (AC solution), the system cannot be represented with a purely resistive circuit.
+A natural step would be to extend the resistive circuit with self-inductances (<a class="reference internal" href="#fig-3"><span class="std std-ref">Fig. 3</span></a>).
+However, the obtained current distribution is identical to the DC solution, which is incorrect.</p>
+<figure class="align-default" id="id3">
+<span id="fig-3"></span><img alt="../_images/peec_3.png" src="../_images/peec_3.png" />
+<figcaption>
+<p><span class="caption-text">Fig. 3 - Extension of the PEEC circuit with self-inductances (incorrect solution).</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The reason behind this incorrect solution is linked to Faraday’s law of induction.
+The magnetic field produced by the current of a cell is inducing a voltage in the neighboring cells.
+Therefore, self-inductances are not sufficient, mutual inductances between the cells are also required.
+The updated equivalent circuit (<a class="reference internal" href="#fig-4"><span class="std std-ref">Fig. 4</span></a>) depicts the resistances, self-inductances, and mutual inductances.
+The obtained current distribution differs from the DC solution, which can be explained by the induced currents (eddy currents).
+It can be seen that the current distribution is concentrated towards the edges of the busbar (skin and proximity effects).</p>
+<figure class="align-default" id="id4">
+<span id="fig-4"></span><img alt="../_images/peec_4.png" src="../_images/peec_4.png" />
+<figcaption>
+<p><span class="caption-text">Fig. 4 - PEEC equivalent circuit and solution for the quasi-static problem.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>With this simple example, the main advantages of the PEEC method are apparent:</p>
+<ul class="simple">
+<li><p>Only the active materials are discretized (no need to mesh the free space).</p></li>
+<li><p>Intuitive understanding of the equation discretization process.</p></li>
+<li><p>Straightforward connection of external circuit elements.</p></li>
+</ul>
+<p>However, the PEEC method also features some drawbacks:</p>
+<ul class="simple">
+<li><p>The number of mutual inductances increases quadratically with the number of cells.</p></li>
+<li><p>The matrix describing the equation system is not sparse (due to the dense inductance matrix).</p></li>
+<li><p>The computational cost is becoming problematic for large systems.</p></li>
+<li><p>The memory requirement is becoming problematic for large systems.</p></li>
+</ul>
+</section>
+<section id="fft-accelerated-peec-method">
+<h2>FFT-Accelerated PEEC Method<a class="headerlink" href="#fft-accelerated-peec-method" title="Link to this heading"></a></h2>
+<p>Several methods can be used to mitigate the dense matrix problem (domain decomposition, hierarchical matrix, multipole method, etc.).
+PyPEEC is using the FFT-accelerated method proposed in 2022 (<a class="reference external" href="https://doi.org/10.1109/TPEL.2021.3092431">paper</a>).
+This variant of the PEEC method relies on the translational invariance of the mutual inductance coefficients.
+In other words, the mutual inductance between two cells is only dependent on their relative positions to each other.
+Therefore, if a regular voxel structure is used for the discretization, many coefficients are identical (<a class="reference internal" href="#fig-5"><span class="std std-ref">Fig. 5</span></a>).</p>
+<figure class="align-default" id="id5">
+<span id="fig-5"></span><img alt="../_images/peec_5.png" src="../_images/peec_5.png" />
+<figcaption>
+<p><span class="caption-text">Fig. 5 - Illustration of the translational invariance of the inductance matrix coefficients.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The identical coefficients can be used to reduce the computational cost of the PEEC problem (<a class="reference internal" href="#fig-6"><span class="std std-ref">Fig. 6</span></a>).
+First, all the mutual inductances are computed with respect to a reference voxel (located at the corner of the structure).
+Then, for any location, all the mutual inductances are obtained with a remapping of the coefficients computed for the reference voxel.
+This implies that, for the inductance matrix, the number of independent coefficients is reduced from O(n^2) to O(n).
+Hence, the computational cost and memory requirement for generating and storing the inductance matrix is massively reduced.</p>
+<figure class="align-default" id="id6">
+<span id="fig-6"></span><img alt="../_images/peec_6.png" src="../_images/peec_6.png" />
+<figcaption>
+<p><span class="caption-text">Fig. 6 - Illustration of the remapping of the inductance matrix coefficients.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>With all the repeated coefficients, the inductance matrix is a block-Toeplitz Toeplitz-block matrix.
+For such matrices, the matrix-vector multiplications can be done with Fast Fourier Transforms (<a class="reference internal" href="#fig-7"><span class="std std-ref">Fig. 7</span></a>).
+Hence, the Fast Fourier Transforms reduce the computational complexity of multiplications from O(n^2) to O(n*log(n)).</p>
+<figure class="align-default" id="id7">
+<span id="fig-7"></span><img alt="../_images/peec_7.png" src="../_images/peec_7.png" />
+<figcaption>
+<p><span class="caption-text">Fig. 7 - Toeplitz matrix-vector multiplication with FFT.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In summary, with a voxel structure, the PEEC method features the following advantages:</p>
+<ul class="simple">
+<li><p>Reduction of the number of independent inductance coefficients from O(n^2) to O(n).</p></li>
+<li><p>Reduction of the memory footprint of the inductance matrix from O(n^2) to O(n).</p></li>
+<li><p>Reduction of the matrix multiplication complexity from O(n^2) to O(n*log(n)).</p></li>
+<li><p>PEEC problems with several millions of voxels can be solved in a few minutes.</p></li>
+</ul>
+</section>
+<section id="numerical-optimization">
+<h2>Numerical Optimization<a class="headerlink" href="#numerical-optimization" title="Link to this heading"></a></h2>
+<p>The code is reasonably optimized, leveraging NumPy and SciPy for the numerical operations.
+All the code is vectorized, no loops are used for the array/matrix/tensor operations.
+Sparse matrix algebra is used wherever appropriate to speed up the code and limit the memory consumption.
+Wherever possible, multithreading/multiprocessing is used for exploiting multicore CPUs.</p>
+<p>The following optimizations are available for the computationally heavy operations:</p>
+<ul class="simple">
+<li><p>Computation of the Green functions and electric-magnetic coupling functions.</p>
+<ul>
+<li><p>If the distance between the considered voxels is small, an analytical solution is used.</p></li>
+<li><p>If the distance between the considered voxels is large, a numerical approximation is used.</p></li>
+</ul>
+</li>
+<li><p>Two different approaches can be used to solve the equation system.</p>
+<ul>
+<li><p>Direct solver - The electric and magnetic equations are solved together.</p></li>
+<li><p>Segregated solver - The electric and magnetic equations are solved separately.</p></li>
+</ul>
+</li>
+<li><p>Different sparse factorization algorithms are available for the sparse preconditioner.</p>
+<ul>
+<li><p>SuperLU is typically slower but is always available (integrated with SciPy).</p></li>
+<li><p>MKL/PARDISO is typically faster than SuperLU (available through Pydiso).</p></li>
+<li><p>PyAMG is typically slow but uses less memory (risk of convergence issues).</p></li>
+</ul>
+</li>
+<li><p>Different iterative solvers are available for the dense matrices.</p>
+<ul>
+<li><p>GMRES - Generalized Minimal RESidual algorithm.</p></li>
+<li><p>GCROT - Flexible GCROT(m,k) algorithm (often faster).</p></li>
+</ul>
+</li>
+<li><p>The FFTs used for the matrix-vector products can be done with several algorithms.</p>
+<ul>
+<li><p>NumPy FFT library is always available (integrated with NumPy).</p></li>
+<li><p>SciPy FFT library is always available (integrated with SciPy).</p></li>
+<li><p>FFTW has to be installed separately (available through pyFFTW).</p></li>
+<li><p>MKL/FFT has to be installed separately (available through mkl_fft).</p></li>
+<li><p>CuPy is extremely fast but requires GPUs compatible with the CUDA toolkit.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">file_tolerance</span></code> input file is used to define all the numerical parameters:</p>
+<ul>
+<li><p>Definition of the numerical options and tolerances.</p></li>
+<li><p>Selection of the libraries used for numerical operations.</p></li>
+<li><p>Definition of the multithreading/multiprocessing options.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Thomas Guillod - Dartmouth College.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

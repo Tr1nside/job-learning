@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Known Issues &mdash; PyPEEC</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../_static/icon.png"/>
+    <link rel="canonical" href="https://pypeec.otvam.ch/content/warnings.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a92a099e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Doc" href="api.html" />
+    <link rel="prev" title="File Formats" href="formats.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7a9aa3" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyPEEC - 5.7.1
+              <img src="../_static/sphinx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General Doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Doc</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="method.html">PEEC Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">File Formats</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Known Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pypeec-issues">PyPEEC Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#library-issues">Library Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-issues">General Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7a9aa3" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyPEEC - 5.7.1</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Known Issues</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="known-issues">
+<h1>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h1>
+<section id="pypeec-issues">
+<h2>PyPEEC Issues<a class="headerlink" href="#pypeec-issues" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The geometry is meshed with a <strong>regular voxel structure</strong> (uniform grid).
+This implies that large geometries with small features cannot be meshed efficiently.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If should be noted that the <strong>inductance</strong> is only fully defined for closed loops.
+For non-closed loops, only the concept of <strong>partial inductance</strong> is well defined.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>magnetic near-field</strong> computation is done with <strong>lumped variables</strong>.
+Therefore, the computation is only accurate far away from the voxel structure.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For problems with <strong>magnetic domains</strong>, the <strong>preconditioner</strong> is not optimal.
+This might lead to a slow convergence of the iterative matrix solver.
+For such cases, using the segregated solver approach might be useful.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It should be noted that <strong>surface charges</strong> are not considered.
+Only volume charges are used, which is an approximation.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During the <strong>voxelization</strong> process, the same voxel can be assigned to several domains.
+The problem is solved with used-provided <strong>conflict</strong> resolution rules between the domains.</p>
+</div>
+</section>
+<section id="library-issues">
+<h2>Library Issues<a class="headerlink" href="#library-issues" title="Link to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>plotting code</strong> is probably sensitive to the environment (platform and version of the libraries).
+Particularly, using the Wayland display system (instead of X11) is creating several issues.
+The plotting code (viewer and plotter) is separated from the simulation code (mesher and solver).
+Hence, these graphical dependencies are minimized and insulated from the rest of the code.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Jupyter</strong> is not included in the default package dependencies.
+Inside Jupyter notebooks, IPyWidgets, Trame, and ipympl are used for the rendering.
+Jupyter support is optional, PyPEEC is fully functional without Jupyter.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>GPU libraries</strong> (CuPy and CUDA) are not included in the package dependencies.
+The GPU support is extremely hardware/platform/version dependent.
+GPU support is optional, PyPEEC is fully functional without GPU support.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>FFTW, PyAMG, MKL/FFT, and MKL/PARDISO</strong> are not included in the default package dependencies.
+These libraries can be tricky to install, especially on MS Windows or Apple MacOS.
+The aforementioned libraries are optional, PyPEEC is fully functional without them.</p>
+</div>
+</section>
+<section id="general-issues">
+<h2>General Issues<a class="headerlink" href="#general-issues" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Python <strong>Pickle files</strong> can be used to store the mesher and solver results.
+Pickling data is not secure. Only load Pickle files that you trust.
+JSON/MessagePack files can be used to solve this problem.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <strong>Docker image</strong> is only intended for test purposes.
+This image is not screened for eventual vulnerabilities.
+Do not use the image for public-facing servers.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <strong>dependencies</strong> are under <strong>various licenses</strong>.
+Make sure to respect these licenses if you package and/or distribute these libraries.
+Qt is under a copyleft license (LGPL and GPL). FFTW is also under a copyleft license (GPL).
+INTEL/MKL and NVIDIA/CUDA are proprietary software (these libraries are optional).</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Thomas Guillod - Dartmouth College.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
