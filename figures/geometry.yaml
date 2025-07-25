@@ -1,0 +1,40 @@
+mesh_type: shape
+
+data_voxelize:
+  param:
+    dx: 0.001
+    dy: 0.001
+    dz: 0.001
+    xy_min: [-0.005, -0.005]
+    xy_max: [0.005, 0.005]
+
+  layer_stack:
+    - n_layer: 1
+      tag_layer: cond
+    - n_layer: 1
+      tag_layer: term
+
+  geometry_shape:
+    dom_cond:
+      - shape_layer: ["cond"]
+        shape_operation: add
+        shape_type: trace
+        shape_data:
+          width: 0.001
+          coord: [[-0.004, 0.0], [0.004, 0.0]]
+
+    dom_src:
+      - shape_layer: ["term"]
+        shape_operation: add
+        shape_type: pad
+        shape_data:
+          diameter: 0.001
+          coord: [[-0.004, 0.0]]
+
+    dom_sink:
+      - shape_layer: ["term"]
+        shape_operation: add
+        shape_type: pad
+        shape_data:
+          diameter: 0.001
+          coord: [[0.004, 0.0]]

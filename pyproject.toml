@@ -1,0 +1,9 @@
+[project]
+name = "pypeec-learn"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pypeec>=5.7.1",
+]
