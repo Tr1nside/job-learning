@@ -1,33 +1,49 @@
-from config import main_logger, Paths, Mode
+from config import main_logger, Paths, Mode, objects_path, creating_paths, config_path
+from utils import running_processing, running_gui
 
-from pathlib import Path
-from utils import running_pypeec
+from concurrent.futures import ThreadPoolExecutor
+
 
 # const
+main_logger.debug("=== Creating consts ===")
+
 VIEWER = 0
 PLOTTER = 1
 
 
-main_logger.info("=== Creating paths ===")
+# paths and mode
+main_logger.debug("=== Creating const path and mode ===")
 
-current_path = Path(__file__).resolve().parent
-
-geometry = current_path.parent / "figures" / "geometry.yaml"
-viewer = current_path.parent / "other" / "config" / "viewer.yaml"
-problem = current_path.parent / "figures" / "problem.yaml"
-tolerance = current_path.parent / "other" / "config" / "tolerance.yaml"
-plotter = current_path.parent / "other" / "config" / "plotter.yaml"
-
-solution = current_path.parent / "other" / "solution.json.gz"
-voxel = current_path.parent / "other" / "voxel.json.gz"
+models_dirs = set()
+for model_dir in objects_path.iterdir():
+    if model_dir.is_dir() and model_dir !=  config_path:
+        paths = creating_paths(model_dir)
+        models_dirs.add(paths)
 
 
-main_logger.info("=== Creating data for main ===")
+def process_dir(object_paths: Paths):
+    main_logger.debug(f"=== Processing {object_paths.geometry_file.parent.name} ===")
+    running_processing(object_paths)
 
-paths_for_pypeec = Paths(geometry, voxel, viewer, solution, problem, tolerance, plotter)
-mode = Mode(VIEWER, PLOTTER)
 
+def run_all_models_proccesing(objects_dirs: set):
+    main_logger.debug("=== Run multiprocessing ===")
+    with ThreadPoolExecutor() as executor:
+        executor.map(process_dir, objects_dirs)
+    
+def run_all_models_gui(objects_dirs: set, mode: Mode = Mode(1, 0)):
+    for dirs in objects_dirs:
+        running_gui(dirs, mode)
 
 if __name__ == "__main__":
-    running_pypeec(paths_for_pypeec, mode)
+    
+    mode = Mode(VIEWER, PLOTTER)
+    main_logger.info(f"=== Selected: \n=== Viewer = {mode.viewer} \n=== Plotter = {mode.plotter}")
+
+    main_logger.info("=== Run proccesing models ===")
+    run_all_models_proccesing(models_dirs)
+    
+    main_logger.info("=== Run GUI for models ===")
+    run_all_models_gui(models_dirs, mode)
+
     main_logger.info("=== End ===")

@@ -2,7 +2,7 @@ from pathlib import Path
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)
 class Paths:
     geometry_file: Path
     voxel_file: Path
